@@ -169,14 +169,14 @@
       "name": "proxycat",
       "bootstrapKind": "git-clone",
       "repo": "https://github.com/honmashironeko/ProxyCat.git",
-      "installDir": "D:\\wangluo\\ProxyCat",
+      "installDir": "&lt;工具根目录&gt;\\ProxyCat",
       "docsUrl": "https://github.com/honmashironeko/ProxyCat",
       "canAutoInstall": true,
       "verifyCommand": "proxycat",
       "postInstallSteps": [
-        "git clone https://github.com/honmashironeko/ProxyCat.git D:\\wangluo\\ProxyCat",
-        "pip install -r D:\\wangluo\\ProxyCat\\requirements.txt",
-        "使用 D:\\wangluo\\bin\\proxycat.bat 启动"
+        "git clone https://github.com/honmashironeko/ProxyCat.git &lt;工具根目录&gt;\\ProxyCat",
+        "pip install -r &lt;工具根目录&gt;\\ProxyCat\\requirements.txt",
+        "使用 &lt;工具根目录&gt;\\bin\\proxycat.bat 启动"
       ]
     },
     {

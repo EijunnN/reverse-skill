@@ -10,7 +10,7 @@
 | 二进制 exe/dll/so/elf | `ida-reverse/` — IDA Pro 反编译 | `radare2/` — CLI 分析，或 `reverse-engineering/tools.md` — GDB/Unicorn |
 | JavaScript / Web 前端 | `js-reverse/` — 5 阶段工作流 | anything-analyzer MCP 的浏览器工具，或 jshookmcp 的浏览器/CDP/Hook 能力 |
 | HTTP 抓包 / 浏览器采样 / 请求重放 | anything-analyzer MCP（23816） | `js-reverse/`、jshookmcp 或 `competition-web-runtime/` |
-| 固件 / IoT | `reverse-engineering/platforms.md` — binwalk/ARM/MIPS | `reverse-engineering/tools.md` — Ghidra headless |
+| 固件 / IoT | `firmware-pentest/` — OWASP FSTM 全链路：提取→仿真→fuzz→利用 | `reverse-engineering/platforms.md` — 仅静态 RE / `reverse-engineering/tools.md` — Ghidra headless |
 | WASM / Python 字节码 / .NET | `reverse-engineering/languages.md` | 按具体语言查对应章节 |
 | macOS / iOS | `reverse-engineering/platforms.md` — Mach-O/ObjC/Swift | — |
 | 内存转储 / PCAP | `reverse-engineering/platforms.md` | `reverse-engineering/patterns*.md` |
@@ -60,6 +60,21 @@
 | "符号迁移/跨版本对比" | `binary-diff/SKILL.md` — LLM 批量符号迁移 |
 | "缺 PDB/旧版符号推导新版" | `binary-diff/SKILL.md` — 跨版本符号迁移 |
 | "bindiff/函数偏移迁移" | `binary-diff/SKILL.md` — 二进制差分 |
+| "N-day/补丁差分/CVE 还原/1day 武器化" | `patch-diff-exploit/SKILL.md` — 补丁→PoC→打补丁前主机 |
+| "Patch Tuesday/MSRC/Microsoft Update Catalog" | `patch-diff-exploit/references/patch-tuesday-workflow.md` |
+| "ghidriff/Diaphora/DeepDiff（攻击侧）" | `patch-diff-exploit/references/diff-tools-comparison.md` |
+| "pwn/栈溢出/ROP/ret2libc/写 exploit" | `pwn-chain/SKILL.md` — RE→exploit 完整流水线 |
+| "堆利用/tcache/fastbin/unsorted bin" | `pwn-chain/references/heap-pwn.md` |
+| "kernel pwn/内核提权/modprobe_path/commit_creds" | `pwn-chain/references/kernel-pwn.md` |
+| "pwntools/GEF/pwndbg/one_gadget/libc-database" | `pwn-chain/SKILL.md` |
+| "固件渗透/路由器固件/IoT 漏洞利用" | `firmware-pentest/SKILL.md` — 从提取打到实机 |
+| "binwalk/unblob/SquashFS/UBI/JFFS2" | `firmware-pentest/references/extraction-methodology.md` |
+| "EMBA/自动化固件审计/cve-bin-tool" | `firmware-pentest/references/emba-automated-analysis.md` |
+| "Firmadyne/FAT/QEMU 全系统仿真/AFL++ fuzz" | `firmware-pentest/references/emulation-and-fuzz.md` |
+| "EDR 绕过/AV bypass/免杀/红队投递" | `edr-bypass-re/SKILL.md` — 逆向防御方→针对性绕过 |
+| "direct syscall/indirect syscall/Hell's Gate/SysWhispers" | `edr-bypass-re/references/unhook-techniques.md` |
+| "ETW patch/AMSI patch/telemetry blinding" | `edr-bypass-re/references/telemetry-blinding.md` |
+| "ntdll hook/pe-sieve/EDR hook 表" | `edr-bypass-re/references/hook-survey.md` |
 | "端口扫描/Nmap" | `pentest-tools/SKILL.md` — 信息收集 |
 | "漏洞扫描/Nuclei" | `pentest-tools/SKILL.md` — 漏洞检测 |
 | "SQL 注入/SQLMap" | `pentest-tools/SKILL.md` — Web 渗透 |
@@ -144,6 +159,10 @@
 | agent-browser / Playwright | `browser-automation/` — 浏览器自动化（打开、点击、填表、爬取、截图） |
 | OpenReverse (UIA/CUA) | `browser-automation/` — Windows 桌面应用自动化 + 网络观察（mitmproxy） |
 | LLM 符号迁移 / BinDiff 替代 | `binary-diff/` — 跨版本符号批量迁移（DeepSeek/GPT） |
+| BinDiff / Diaphora / ghidriff / DeepDiff（攻击侧） | `patch-diff-exploit/` — 从补丁定位漏洞点→武器化 |
+| binwalk v3 / unblob / EMBA / Firmadyne / FAT | `firmware-pentest/` — 固件提取/自动化审计/仿真 |
+| pwntools / GEF / pwndbg / ROPgadget / Ropper / one_gadget / libc-database | `pwn-chain/` — RE→可用 exploit |
+| SysWhispers3 / Hell's Gate / pe-sieve / API Monitor | `edr-bypass-re/` — EDR 绕过研究与实现 |
 | Nmap / Masscan | `pentest-tools/` — 端口扫描、服务识别 |
 | Nuclei / ZAP / Nikto | `pentest-tools/` — 漏洞扫描 |
 | SQLMap / FFUF / Gobuster | `pentest-tools/` — Web 渗透（注入/爆破） |
@@ -234,4 +253,36 @@ Cookie HMAC 密钥复用 → 后台认证绕过：
   competition-web-runtime/references/cookie-hmac-key-reuse-auth-bypass.md
   ↓ 适用场景
   URL 含 access token、签名 Cookie、后台 admin_session 共用同一密钥
+
+固件渗透路径：
+  firmware-pentest/references/extraction-methodology.md → 提取文件系统
+  ↓ 拿到二进制
+  firmware-pentest/references/emba-automated-analysis.md → EMBA 自动审计找已知 CVE
+  ↓ 已知 CVE 不够 / 想找 0-day
+  firmware-pentest/references/emulation-and-fuzz.md → Firmadyne 仿真 + AFL++ fuzz
+  ↓ 找到 crash
+  pwn-chain/references/stack-pwn.md 或 heap-pwn.md → 写 exploit
+  ↓ 打实机
+  attack-chain/SKILL.md → 整合进攻击链
+
+N-day 武器化路径：
+  patch-diff-exploit/references/patch-tuesday-workflow.md → 取补丁前后二进制
+  ↓ 对齐符号
+  patch-diff-exploit/references/diff-tools-comparison.md → BinDiff/ghidriff/Diaphora 选型
+  ↓ 定位变更
+  patch-diff-exploit/references/root-cause-and-poc.md → LLM 辅助根因 + 写 PoC
+  ↓ 武器化
+  pwn-chain/SKILL.md（构造稳定 exploit）+ pentest-tools/references/msf-protocol.md（Metasploit 模块化）
+
+红队投递路径：
+  attack-chain/SKILL.md → 选阶段
+  ↓ 需要绕 EDR
+  edr-bypass-re/references/hook-survey.md → 识别目标 EDR 的 hook
+  ↓ 选绕过技术
+  edr-bypass-re/references/unhook-techniques.md → 直接 syscall / Hell's Gate
+  edr-bypass-re/references/telemetry-blinding.md → ETW patch / AMSI patch
+  ↓ 本地验证
+  pe-sieve / API Monitor → 确认 unhook 干净
+  ↓ 投递
+  回到 attack-chain 后渗透阶段
 ```

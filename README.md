@@ -62,13 +62,18 @@ AI社区：https://linux.do
     ├── scripts\                 # 工具索引刷新与共享脚本
     ├── field-journal\           # 自动进化经验日志
     ├── apk-reverse\             # APK 逆向
+    ├── attack-chain\            # 多阶段攻击链编排
     ├── binary-diff\             # 跨版本符号迁移
     ├── browser-automation\      # 浏览器+桌面自动化（Playwright+OpenReverse）
     ├── diagram-generator\       # 图表生成（Mermaid/Graphviz/PlantUML）
     ├── docs-generator\          # 技术文档/报告生成
+    ├── edr-bypass-re\           # EDR 绕过逆向（红队投递）
+    ├── firmware-pentest\        # 固件渗透链（OWASP FSTM）
     ├── ida-reverse\             # IDA Pro 逆向
     ├── js-reverse\              # 前端 JS / 浏览器链路逆向
+    ├── patch-diff-exploit\      # N-day 补丁差分→利用
     ├── pentest-tools\           # 渗透测试工具链
+    ├── pwn-chain\               # RE→可用 exploit（栈/堆/内核）
     ├── radare2\                 # radare2 CLI 逆向
     └── reverse-engineering\     # 通用逆向方法论
 ```
@@ -208,6 +213,10 @@ C:\Tools\radare2\                      # 可选
 | 通用方法论 | `reverse-engineering\` | 跨语言、跨平台、反分析、模式库 |
 | 浏览器与桌面自动化 | `browser-automation\` | Playwright 浏览器操作 + OpenReverse 桌面应用自动化 |
 | 跨版本符号迁移 | `binary-diff\` | 旧版符号迁移新版、缺 PDB 推导、LLM 批量迁移 |
+| N-day 补丁差分→利用 | `patch-diff-exploit\` | 从厂商补丁定位漏洞点、写 PoC、N-day 武器化 |
+| RE→利用链 | `pwn-chain\` | 从逆向走到可用 exploit：栈/堆/内核 pwn、pwntools、libc-database |
+| 固件渗透链 | `firmware-pentest\` | OWASP FSTM 全链路：提取→EMBA→Firmadyne 仿真→AFL++ fuzz→打实机 |
+| EDR 绕过逆向 | `edr-bypass-re\` | 逆向 EDR hook 表/ETW/AMSI → 直接 syscall / Hell's Gate / call stack spoof |
 | 渗透测试工具链 | `pentest-tools\` | Nmap/Nuclei/SQLMap/FFUF/Hashcat 等 20+ 工具 MCP |
 | 图表生成 | `diagram-generator\` | Mermaid/Graphviz/PlantUML 图表（攻击路径/架构/数据流） |
 | 技术文档 | `docs-generator\` | 任务完成后自动生成逆向/渗透/CTF 报告 |
@@ -221,6 +230,10 @@ C:\Tools\radare2\                      # 可选
 - 找前端签名 / 加密参数 → `js-reverse\SKILL.md`
 - HTTP 抓包 / 浏览器采样 / 请求回放 → anything-analyzer + `js-reverse`
 - 渗透测试 / 端口扫描 / 漏洞扫描 → `pentest-tools\SKILL.md`
+- 固件 / IoT / 路由器渗透 → `firmware-pentest\SKILL.md`
+- N-day / 补丁差分 / 写 CVE PoC → `patch-diff-exploit\SKILL.md`
+- 写 exploit / pwn / 栈堆内核利用 → `pwn-chain\SKILL.md`
+- EDR / AV 绕过 / 红队投递 → `edr-bypass-re\SKILL.md`
 - 浏览器/桌面自动化 → `browser-automation\SKILL.md`
 - 符号迁移 / 跨版本对比 → `binary-diff\SKILL.md`
 - 画图 / 架构图 / 攻击路径图 → `diagram-generator\SKILL.md`

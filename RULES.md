@@ -41,6 +41,10 @@
 - 写报告、写文档、出报告、writeup、技术文档、渗透报告、逆向报告
 - 浏览器自动化、打开网页、填表、爬取、截图、自动化登录、Playwright、agent-browser、headless、桌面自动化、OpenReverse、UIA、CUA、Windows 自动化、桌面操作
 - 符号迁移、bindiff、跨版本、PDB 缺失、函数偏移迁移、symbol migration、版本对比、旧版符号
+- N-day、Nday、补丁差分、patch diff、patch tuesday、1day、CVE 复现、漏洞还原、ghidriff、Diaphora、DeepDiff、Microsoft Update Catalog、wsuspect、MSRC、补丁分析
+- pwn、栈溢出、堆溢出、ROP、ret2libc、ret2csu、one_gadget、libc-database、tcache、fastbin、unsorted bin、large bin、House of Force、House of Orange、kernel pwn、kROP、SMEP、SMAP、KASLR、modprobe_path、core_pattern、commit_creds、pwntools、GEF、pwndbg
+- 固件、firmware、IoT、binwalk、unblob、squashfs、UBI、JFFS2、Firmadyne、FAT、QEMU 全系统仿真、EMBA、cve-bin-tool、固件渗透、路由器固件、嵌入式漏洞利用、AFL++、boofuzz、UART、JTAG
+- EDR 绕过、AV bypass、免杀、unhook、direct syscall、indirect syscall、Hell's Gate、Halo's Gate、Tartarus Gate、SysWhispers、ETW patch、AMSI patch、call stack spoofing、hardware breakpoint Blindside、MITRE T1562、ntdll unhook、kernel callback、CrowdStrike 绕过、Defender 绕过、SentinelOne 绕过、Elastic Defend、pe-sieve
 - 端口扫描、Nmap、漏洞扫描、Nuclei、SQL 注入、SQLMap、目录爆破、FFUF、密码破解、Hashcat、Hydra、Metasploit、Impacket、pentestMCP
 - SRC、Bug Bounty、众测、漏洞赏金、HackerOne、WAF bypass、绕过 WAF、IDOR、越权、任意账号
 - 画图、流程图、架构图、攻击路径图、时序图、状态图、数据流图、Mermaid、Graphviz、PlantUML、diagram

@@ -18,7 +18,7 @@
     },
     "burpsuite": {
       "command": "node",
-      "args": ["D:\\reverse-skill-private-main\\burp-mcp-full\\mcp-bridge.js"]
+      "args": ["&lt;SKILL_ROOT&gt;/burp-mcp-full/mcp-bridge.js"]
     }
   }
 }

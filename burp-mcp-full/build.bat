@@ -1,7 +1,7 @@
 @echo off
 setlocal
 
-set JAVA_HOME=D:\wangluo\jdk-21.0.11+10
+set JAVA_HOME=&lt;JDK安装目录&gt;
 set JAVAC=%JAVA_HOME%\bin\javac.exe
 set JAR=%JAVA_HOME%\bin\jar.exe
 set SRC=src\main\java\com\burpmcp

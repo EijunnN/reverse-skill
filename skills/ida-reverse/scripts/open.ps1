@@ -28,10 +28,9 @@ if (-not [string]::IsNullOrWhiteSpace($env:IDADIR)) {
 else {
     # Fallback: check common IDA installation paths
     $idaCandidates = @(
-        'D:\APP\IDA',
-        'D:\idapro',
         'C:\Program Files\IDA Pro',
         'C:\IDA Pro',
+        'D:\IDA',
         (Join-Path $env:USERPROFILE 'Tools\IDA')
     )
     $foundIda = $idaCandidates | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1

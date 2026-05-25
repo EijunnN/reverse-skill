@@ -136,6 +136,11 @@ cybersecurity-skills-router/
 │   ├── reverse-engineering/     # 通用逆向方法论
 │   ├── browser-automation/      # 浏览器自动化
 │   ├── binary-diff/             # 符号迁移
+│   ├── patch-diff-exploit/      # N-day 补丁差分→利用
+│   ├── pwn-chain/               # RE→可用 exploit
+│   ├── firmware-pentest/        # 固件渗透链
+│   ├── edr-bypass-re/           # EDR 绕过逆向
+│   ├── attack-chain/            # 多阶段攻击链
 │   ├── docs-generator/          # 报告生成
 │   ├── diagram-generator/       # 图表生成
 │   └── field-journal/           # 自动进化经验库

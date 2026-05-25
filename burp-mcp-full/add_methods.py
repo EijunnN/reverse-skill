@@ -1,6 +1,6 @@
 import re
 
-path = r"D:\reverse-skill-private-main\burp-mcp-full\src\main\java\com\burpmcp\McpHttpServer.java"
+path = r"&lt;SKILL_ROOT&gt;\burp-mcp-full\src\main\java\com\burpmcp\McpHttpServer.java"
 with open(path, "r", encoding="utf-8") as f:
     content = f.read()
 

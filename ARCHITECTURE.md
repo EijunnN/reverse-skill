@@ -48,11 +48,18 @@ flowchart LR
         R2[radare2<br/>CLI 分析]
         RE[reverse-engineering<br/>通用方法论]
         BinDiff[binary-diff<br/>符号迁移]
+        PatchDiff[patch-diff-exploit<br/>N-day 武器化]
+    end
+
+    subgraph 漏洞利用
+        Pwn[pwn-chain<br/>RE→exploit]
+        Firmware[firmware-pentest<br/>固件全链路]
     end
 
     subgraph 渗透测试
         Pentest[pentest-tools<br/>工具链+循环框架]
         SrcHunter[src-hunter<br/>19 playbook]
+        EDR[edr-bypass-re<br/>EDR 绕过]
     end
 
     subgraph Web/浏览器
@@ -77,13 +84,17 @@ flowchart LR
     end
 
     SKILL --> Routing
-    Routing --> APK & IDA & R2 & RE & BinDiff
-    Routing --> Pentest & JS & Browser
+    Routing --> APK & IDA & R2 & RE & BinDiff & PatchDiff
+    Routing --> Pentest & JS & Browser & Pwn & Firmware & EDR
     Routing --> CTF
 
     Pentest --> SrcHunter
     APK -->|.so 分流| IDA
     APK -->|.so 分流| R2
+    PatchDiff -->|写出 PoC| Pwn
+    Firmware -->|找到 crash| Pwn
+    Pwn -->|整合| Pentest
+    EDR -->|投递阶段| Pentest
     JS -->|浏览器操作| Browser
     
     Bootstrap --> Discovery --> ToolIndex

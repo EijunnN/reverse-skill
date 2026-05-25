@@ -71,7 +71,7 @@ function Get-ReverseToolCatalog {
             VersionArgs = @('--version')
             Fallbacks = @(
                 [pscustomobject]@{ Type = 'command'; Value = 'frida' },
-                [pscustomobject]@{ Type = 'path'; Value = (Join-Path $env:APPDATA 'Python\Python314\Scripts\frida.exe') }
+                [pscustomobject]@{ Type = 'path'; Value = (Join-Path $env:APPDATA 'Python\Python3xx\Scripts\frida.exe') }
             )
         }
         [pscustomobject]@{
@@ -81,7 +81,7 @@ function Get-ReverseToolCatalog {
             VersionArgs = @('--version')
             Fallbacks = @(
                 [pscustomobject]@{ Type = 'command'; Value = 'frida-ps' },
-                [pscustomobject]@{ Type = 'path'; Value = (Join-Path $env:APPDATA 'Python\Python314\Scripts\frida-ps.exe') }
+                [pscustomobject]@{ Type = 'path'; Value = (Join-Path $env:APPDATA 'Python\Python3xx\Scripts\frida-ps.exe') }
             )
         }
         [pscustomobject]@{
@@ -220,7 +220,7 @@ function Get-ReverseToolCatalog {
             VersionArgs = @()
             Fallbacks = @(
                 [pscustomobject]@{ Type = 'command'; Value = 'analyzeHeadless' },
-                [pscustomobject]@{ Type = 'path'; Value = 'D:\wangluo\ghidra_12.1_PUBLIC\support\analyzeHeadless.bat' },
+                [pscustomobject]@{ Type = 'path'; Value = '&lt;工具根目录&gt;\ghidra\support\analyzeHeadless.bat' },
                 [pscustomobject]@{ Type = 'path'; Value = (Join-Path $env:USERPROFILE 'Tools\ghidra\support\analyzeHeadless.bat') },
                 [pscustomobject]@{ Type = 'path'; Value = (Join-Path $env:USERPROFILE 'Tools\ghidra\ghidra_11.3_PUBLIC\support\analyzeHeadless.bat') }
             )

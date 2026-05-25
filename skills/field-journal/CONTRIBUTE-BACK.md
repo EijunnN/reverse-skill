@@ -53,7 +53,7 @@
 
 ```bash
 # 1. Fork 主仓库（如果还没 fork）
-gh repo fork zhaoxuya520/reverse-skill-private --clone=false
+gh repo fork &lt;你的GitHub用户名&gt;/&lt;仓库名&gt; --clone=false
 
 # 2. 在本地创建贡献分支
 git checkout -b contribute/journal-YYYY-MM-DD-keyword
@@ -69,7 +69,7 @@ git commit -m "[field-journal] 场景类型: 关键词摘要"
 git push origin contribute/journal-YYYY-MM-DD-keyword
 
 # 6. 创建 PR
-gh pr create --repo zhaoxuya520/reverse-skill-private \
+gh pr create --repo &lt;你的GitHub用户名&gt;/&lt;仓库名&gt; \
   --title "[field-journal] YYYY-MM-DD 场景类型 - 关键词" \
   --body "## 贡献内容\n- 场景：xxx\n- 关键词：xxx\n- 脱敏确认：✓\n\n## 数据安全声明\n本条目已按模板要求完成脱敏，不包含真实目标信息。"
 ```
@@ -82,7 +82,7 @@ git add skills/field-journal/YYYY-MM-DD_*.md
 git add skills/field-journal/_index.md
 git commit -m "[field-journal] 场景类型: 关键词摘要"
 git push origin contribute/journal-YYYY-MM-DD-keyword
-gh pr create --repo zhaoxuya520/reverse-skill-private \
+gh pr create --repo &lt;你的GitHub用户名&gt;/&lt;仓库名&gt; \
   --title "[field-journal] YYYY-MM-DD 场景类型 - 关键词" \
   --body "脱敏确认：✓"
 ```
