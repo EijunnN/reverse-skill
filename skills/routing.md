@@ -1,6 +1,14 @@
 # Reverse Engineering Skill Routing Matrix
 
-Route tasks to the most appropriate skill module by target type, user intent, and toolchain. Reference only, not mandatory.
+Route tasks to the most appropriate skill module by target type, user intent, and toolchain.
+
+## CRITICAL: Routing Execution Protocol
+
+1. **MUST** complete routing BEFORE executing. Do NOT "do first, route later".
+2. **MUST** match ALL three dimensions (target type + user intent + toolchain) before entering a skill.
+3. If route not matched → propose new skill, do NOT force-fit.
+4. Cross-module tasks → combine skills per "Path Crossing" section.
+5. After routing, read the target skill's SKILL.md BEFORE taking action.
 
 ## By Target Type
 

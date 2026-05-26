@@ -256,6 +256,46 @@ Before saying "task complete" or "done", MUST self-check:
 
 ---
 
+## Multi-Task & Interrupt Handling
+
+- If user switches topic mid-task, save current progress to field-journal (mark as "incomplete")
+- When user returns, restore context from field-journal
+- Multiple security tasks given simultaneously → execute sequentially by priority (avoid tool conflicts)
+- Long-running tasks (e.g., large file IDA analysis) → report progress periodically, don't let user think it's stuck
+
+---
+
+## Context Window Layout Rules (Attention Optimization)
+
+LLM attention distribution (high→low):
+```
+[First 10%]  ████████████ ← Highest attention — put "immediate action" instructions here
+[Middle 80%] ████░░░░░░░░ ← Attention decays — put reference materials here
+[Last 10%]   ████████████ ← Attention recovers — put "MUST NOT skip" and Checklist here
+```
+
+- **MUST**: Critical actions go in first or last 10% of any instruction file
+- **MUST NOT**: Bury important directives in the middle of long documents
+
+---
+
+## Parameter Stability (Code Words)
+
+When tool parameters MUST be passed exactly as given, use opaque identifiers (code words) to reduce model's tendency to "semantically optimize":
+
+- Applicable: bootstrap params, dangerous action switches, approval status values, scan scope boundaries
+- **MUST**: Define mapping table first, expand in command layer
+- **MUST NOT**: Let Agent freely rewrite semantic parameters (e.g., changing strict/deny to lenient synonyms)
+
+Example:
+```
+alpha -> --scope authorized-only
+beta  -> --approval required
+gamma -> --destructive false
+```
+
+---
+
 ## Web Search Knowledge Augmentation (MUST use when search capability available)
 
 When AI has web search capability, **MUST proactively search** in these scenarios:
