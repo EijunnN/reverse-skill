@@ -3,15 +3,22 @@
 </p>
 
 <h1 align="center">reverse-skill</h1>
-<h3 align="center">逆向技能路由包 · Cybersecurity Skills Router</h3>
+<h3 align="center">Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack</h3>
 
 <p align="center"><em style="font-family: 'KaiTi', 'STKaiti', 'SimSun', serif; font-size: 1.3em; color: #999;">破暗而行，逆水为舟</em></p>
+
+<p align="center">AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base<br/>
+逆向/渗透/安全技能路由包 — AI 自动路由 · 按需自举工具链 · 自动进化经验库</p>
 
 <p align="center">
   <a href="https://github.com/zhaoxuya520/reverse-skill/stargazers"><img src="https://img.shields.io/github/stars/zhaoxuya520/reverse-skill?style=flat&logo=github" alt="stars"></a>
   <a href="https://github.com/zhaoxuya520/reverse-skill/forks"><img src="https://img.shields.io/github/forks/zhaoxuya520/reverse-skill?style=flat&logo=github" alt="forks"></a>
   <a href="https://github.com/zhaoxuya520/reverse-skill/issues"><img src="https://img.shields.io/github/issues/zhaoxuya520/reverse-skill?style=flat&logo=github" alt="issues"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="license"></a>
+</p>
+
+<p align="center">
+  <a href="https://trendshift.io/repositories/43969?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-43969" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/trendshift/repositories/43969/daily" alt="zhaoxuya520%2Freverse-skill | Trendshift" width="250" height="55"/></a>
 </p>
 
 <br/>
@@ -165,7 +172,8 @@ git clone https://github.com/zhaoxuya520/reverse-skill.git
 │   ├── docs-generator/    # 报告生成
 │   └── llm-security/      # LLM / AI 安全
 ├── CTF-Sandbox-Orchestrator/ # CTF 子技能 (40+)
-└── kali/                  # Kali 辅助脚本
+├── docs/                     # 概览与架构文档
+└── kali/                     # Kali 辅助脚本
 ```
 
 <p align="right">(<a href="#使用说明">返回顶部</a>)</p>

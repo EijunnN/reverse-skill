@@ -31,7 +31,7 @@ AI Community: https://linux.do
    - Kali Linux → read kali/README-kali.md
    - Generic Linux (Ubuntu / Debian / Mint / Pop!_OS, etc.) → read docs/platforms/linux.md
    - macOS → read docs/platforms/macos.md
-   - Other / unknown → read PLATFORMS.md and choose the closest deployment path
+   - Other / unknown → read docs/PLATFORMS.md and choose the closest deployment path
 3. Follow the platform-specific deployment document to check toolchains, script entry points, MCP configuration, and path conventions
 4. If the current system supports Bash, prefer the parity bootstrap entry: bash skills/scripts/bootstrap-reverse.sh <capability>; for index refresh only, run: bash skills/scripts/refresh-tool-index.sh
 5. Read RULES.md → execute all instructions inside it (including the CRITICAL immediate-action block, global injection, precedent-file reading, and routing)
@@ -46,7 +46,7 @@ AI Community: https://linux.do
 | Kali Linux | `/etc/os-release` contains `kali` | `kali/README-kali.md` | `kali/scripts/bootstrap-reverse.sh` / `kali/scripts/refresh-tool-index.sh` |
 | Ubuntu / Debian / Mint / Pop!_OS | `/etc/os-release` contains the distro ID | `docs/platforms/linux.md` | `skills/scripts/bootstrap-reverse.sh` / `skills/scripts/refresh-tool-index.sh` |
 | macOS | `uname -s` = `Darwin` | `docs/platforms/macos.md` | `skills/scripts/bootstrap-reverse.sh` / `skills/scripts/refresh-tool-index.sh` |
-| Other / unknown | Cannot identify confidently | `PLATFORMS.md` | Choose the closest platform, then continue |
+| Other / unknown | Cannot identify confidently | `docs/PLATFORMS.md` | Choose the closest platform, then continue |
 
 > RULES.md contains the full behavior chain (steps 0–14). After reading this file, first complete OS detection and platform-document routing, then read RULES.md and start executing. Do not stop at "configuration completed."
 > The configuration report can be output after platform detection and RULES.md loading, but it is not the endpoint—the endpoint is the user's task being actually completed.
@@ -107,7 +107,7 @@ For index refresh only, run:
 bash skills/scripts/refresh-tool-index.sh
 ```
 
-See [PLATFORMS.md](PLATFORMS.md) for the full support matrix.
+See [docs/PLATFORMS.md](docs/PLATFORMS.md) for the full support matrix.
 
 ---
 

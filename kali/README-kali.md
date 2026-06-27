@@ -297,3 +297,5 @@ bash kali/scripts/bootstrap-reverse.sh r2
 ### Q: 我想同时在 Windows 和 Kali 上用这套系统
 
 没问题。`skills/` 目录通过 Git 同步，`field-journal/` 的经验两边共享。只是执行脚本时 Windows 用 `skills/scripts/*.ps1`，Kali 用 `kali/scripts/*.sh`。
+
+

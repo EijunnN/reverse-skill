@@ -63,8 +63,8 @@ Report + field journal
 |---|---|---|
 | Windows | Full primary path | `README.md`, PowerShell scripts |
 | Kali Linux | Specialized support | `kali/README-kali.md` |
-| Ubuntu / Debian Linux | Generic support | `docs/platforms/linux.md`, `skills/scripts/bootstrap-reverse.sh`, `skills/scripts/refresh-tool-index.sh` |
-| macOS | Generic support | `docs/platforms/macos.md`, `skills/scripts/bootstrap-reverse.sh`, `skills/scripts/refresh-tool-index.sh` |
+| Ubuntu / Debian Linux | Generic support | `platforms/linux.md`, `skills/scripts/bootstrap-reverse.sh`, `skills/scripts/refresh-tool-index.sh` |
+| macOS | Generic support | `platforms/macos.md`, `skills/scripts/bootstrap-reverse.sh`, `skills/scripts/refresh-tool-index.sh` |
 
 See [PLATFORMS.md](PLATFORMS.md) for the full platform matrix. Ordinary Linux and macOS users can list bootstrap capabilities with:
 
@@ -130,10 +130,11 @@ Expected Agent behavior:
 ├── README.md                    # Main entry (Chinese)
 ├── README_EN.md                 # Main entry (English)
 ├── README_AI.md                 # AI Agent bootstrap entry (English)
-├── OVERVIEW.md                  # Detailed overview (English)
-├── OVERVIEW_zh.md               # Detailed overview (Chinese)
 ├── RULES.md                     # Global routing and execution rules
-├── ARCHITECTURE.md              # Architecture notes
+├── docs/OVERVIEW.md              # Detailed overview (English)
+├── docs/OVERVIEW_zh.md           # Detailed overview (Chinese)
+├── docs/ARCHITECTURE.md          # Architecture notes
+├── docs/PLATFORMS.md             # Platform support matrix
 ├── skills/                      # Main Skill directory
 │   ├── SKILL.md                 # Controller entry
 │   ├── routing.md               # Routing matrix
@@ -196,18 +197,19 @@ Keywords: AI Agent, Skill Router, Tool Orchestration, MCP, Workflow Automation, 
 
 ## Related documents
 
-- [README.md](README.md): Main entry (Chinese)
-- [README_EN.md](README_EN.md): Main entry (English)
-- [README_AI.md](README_AI.md): AI bootstrap entry
+- [README.md](../README.md): Main entry (Chinese)
+- [README_EN.md](../README_EN.md): Main entry (English)
+- [README_AI.md](../README_AI.md): AI bootstrap entry
 - [OVERVIEW_zh.md](OVERVIEW_zh.md): Chinese overview
 - [PLATFORMS.md](PLATFORMS.md): platform support matrix
-- [docs/platforms/linux.md](docs/platforms/linux.md): generic Linux setup
-- [docs/platforms/macos.md](docs/platforms/macos.md): macOS setup
-- [RULES.md](RULES.md): global execution rules
+- [platforms/linux.md](platforms/linux.md): generic Linux setup
+- [platforms/macos.md](platforms/macos.md): macOS setup
+- [RULES.md](../RULES.md): global execution rules
 - [ARCHITECTURE.md](ARCHITECTURE.md): architecture notes
-- [skills/routing.md](skills/routing.md): routing matrix
-- [burp-mcp-full/README.md](burp-mcp-full/README.md): BurpSuite MCP module
+- [skills/routing.md](../skills/routing.md): routing matrix
+- [burp-mcp-full/README.md](../burp-mcp-full/README.md): BurpSuite MCP module
 
 ## License
 
-MIT License. See [LICENSE](LICENSE).
+MIT License. See [LICENSE](../LICENSE).
+

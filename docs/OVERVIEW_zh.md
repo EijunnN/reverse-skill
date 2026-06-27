@@ -63,8 +63,8 @@ Skill Router
 |---|---|---|
 | Windows | 完整主线 | `README.md`、PowerShell 脚本 |
 | Kali Linux | 专项适配 | `kali/README-kali.md` |
-| Ubuntu / Debian Linux | 通用适配 | `docs/platforms/linux.md`、`skills/scripts/bootstrap-reverse.sh`、`skills/scripts/refresh-tool-index.sh` |
-| macOS | 通用适配 | `docs/platforms/macos.md`、`skills/scripts/bootstrap-reverse.sh`、`skills/scripts/refresh-tool-index.sh` |
+| Ubuntu / Debian Linux | 通用适配 | `platforms/linux.md`、`skills/scripts/bootstrap-reverse.sh`、`skills/scripts/refresh-tool-index.sh` |
+| macOS | 通用适配 | `platforms/macos.md`、`skills/scripts/bootstrap-reverse.sh`、`skills/scripts/refresh-tool-index.sh` |
 
 平台总览见 [PLATFORMS.md](PLATFORMS.md)。普通 Linux / macOS 用户建议先查看能力列表：
 
@@ -130,10 +130,11 @@ bash skills/scripts/refresh-tool-index.sh
 ├── README.md                    # 主入口（中文）
 ├── README_EN.md                 # 主入口（英文）
 ├── README_AI.md                 # AI Agent bootstrap 入口（英文）
-├── OVERVIEW.md                  # 详细概览（英文）
-├── OVERVIEW_zh.md               # 详细概览（中文）
 ├── RULES.md                     # 全局路由与执行规则
-├── ARCHITECTURE.md              # 架构说明
+├── docs/OVERVIEW.md              # 详细概览（英文）
+├── docs/OVERVIEW_zh.md           # 详细概览（中文）
+├── docs/ARCHITECTURE.md          # 架构说明
+├── docs/PLATFORMS.md             # 平台支持总览
 ├── skills/                      # 主 Skill 目录
 │   ├── SKILL.md                 # 总控入口
 │   ├── routing.md               # 路由矩阵
@@ -196,16 +197,17 @@ bash skills/scripts/refresh-tool-index.sh
 
 ## 相关文档
 
-- [README.md](README.md)：主入口（中文）
-- [README_AI.md](README_AI.md)：AI bootstrap 入口（英文）
+- [README.md](../README.md)：主入口（中文）
+- [README_AI.md](../README_AI.md)：AI bootstrap 入口（英文）
 - [PLATFORMS.md](PLATFORMS.md)：平台支持总览
-- [docs/platforms/linux.md](docs/platforms/linux.md)：普通 Linux 适配
-- [docs/platforms/macos.md](docs/platforms/macos.md)：macOS 适配
-- [RULES.md](RULES.md)：全局执行规则
+- [platforms/linux.md](platforms/linux.md)：普通 Linux 适配
+- [platforms/macos.md](platforms/macos.md)：macOS 适配
+- [RULES.md](../RULES.md)：全局执行规则
 - [ARCHITECTURE.md](ARCHITECTURE.md)：架构说明
-- [skills/routing.md](skills/routing.md)：路由矩阵
-- [burp-mcp-full/README.md](burp-mcp-full/README.md)：BurpSuite MCP 模块
+- [skills/routing.md](../skills/routing.md)：路由矩阵
+- [burp-mcp-full/README.md](../burp-mcp-full/README.md)：BurpSuite MCP 模块
 
 ## License
 
-MIT License. See [LICENSE](LICENSE).
+MIT License. See [LICENSE](../LICENSE).
+

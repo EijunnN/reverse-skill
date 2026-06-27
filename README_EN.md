@@ -14,6 +14,10 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="license"></a>
 </p>
 
+<p align="center">
+  <a href="https://trendshift.io/repositories/43969?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-43969" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/trendshift/repositories/43969/daily" alt="zhaoxuya520%2Freverse-skill | Trendshift" width="250" height="55"/></a>
+</p>
+
 <br/>
 
 <p align="center">
@@ -166,7 +170,8 @@ Platform-specific docs:
 │   ├── docs-generator/    # Reports
 │   └── llm-security/      # LLM security
 ├── CTF-Sandbox-Orchestrator/ # CTF skills
-└── kali/                  # Kali scripts
+├── docs/                     # Overview & architecture docs
+└── kali/                     # Kali scripts
 ```
 
 <p align="right">(<a href="#usage">back to top</a>)</p>

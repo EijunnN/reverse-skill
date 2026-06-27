@@ -21,7 +21,7 @@ Route tasks to the most appropriate skill module by target type, user intent, an
 | Firmware / IoT | `reverse-engineering/platforms.md` — binwalk/ARM/MIPS | `reverse-engineering/tools.md` — Ghidra headless |
 | WASM / Python bytecode / .NET | `reverse-engineering/languages.md` | Check specific language section |
 | macOS / iOS | `reverse-engineering/platforms.md` — Mach-O/ObjC/Swift | `mobile-reverse/` for iOS-specific |
-| Game (Unity/Unreal) | `game-security/` — engine reverse, anti-cheat, IL2CPP/Mono | `ida-reverse/` deep analysis |
+| Game (Unity/Unreal) | `reverse-engineering/` — engine reverse, anti-cheat, IL2CPP/Mono (see seed-014) | `ida-reverse/` deep analysis |
 | Memory dump / PCAP | `reverse-engineering/platforms.md` | `reverse-engineering/patterns*.md` |
 | Malware / virus sample | `reverse-engineering/` — YARA/sandbox/behavior analysis | `ida-reverse/` deep analysis |
 | OLLVM-obfuscated binary (控制流平坦化/虚假控制流/MBA) | `reverse-engineering/references/ollvm-deobfuscation.md` — 完整脱密工作流 | obpo-plugin / d810-ng (IDA) / ollvm-unflattener (Miasm) / ollvm-breaker (Binary Ninja) / angr / deollvm (ARM64)
@@ -71,10 +71,10 @@ Route tasks to the most appropriate skill module by target type, user intent, an
 | "open webpage / browser automation / fill form" | `browser-automation/SKILL.md` — Playwright |
 | "crawl page / screenshot / auto login" | `browser-automation/SKILL.md` |
 | "desktop automation / Windows automation" | `browser-automation/SKILL.md` — OpenReverse |
-| "game reverse / anti-cheat / hack analysis" | `game-security/SKILL.md` |
-| "Unity / IL2CPP / Mono" | `game-security/SKILL.md` — Unity game reverse |
-| "Unreal Engine / UE reverse" | `game-security/SKILL.md` — UE game reverse |
-| "Cheat Engine / memory scan" | `game-security/SKILL.md` — memory analysis |
+| "game reverse / anti-cheat / hack analysis" | `reverse-engineering/SKILL.md` — game reverse (IL2CPP/Unity/Unreal/Cheat Engine) |
+| "Unity / IL2CPP / Mono" | `reverse-engineering/SKILL.md` — Unity + `seed-014_unity-il2cpp-reverse.md` |
+| "Unreal Engine / UE reverse" | `reverse-engineering/SKILL.md` — Unreal Engine reverse |
+| "Cheat Engine / memory scan" | `reverse-engineering/SKILL.md` — Cheat Engine memory analysis |
 | "symbol migration / cross-version compare" | `binary-diff/SKILL.md` — LLM batch migration |
 | "missing PDB / old version symbols" | `binary-diff/SKILL.md` — cross-version symbol migration |
 | "bindiff / function offset migration" | `binary-diff/SKILL.md` — binary diff |
@@ -166,8 +166,8 @@ Route tasks to the most appropriate skill module by target type, user intent, an
 | jshookmcp | `js-reverse/` enhancement MCP for browser/CDP/Hook/Network/SourceMap/AST |
 | agent-browser / Playwright | `browser-automation/` — browser automation |
 | OpenReverse (UIA/CUA) | `browser-automation/` — Windows desktop automation |
-| Cheat Engine / x64dbg / ReClass | `game-security/` — game memory analysis |
-| IL2CPP Dumper / dnSpy | `game-security/` — Unity/Mono game reverse |
+| Cheat Engine / x64dbg / ReClass | `reverse-engineering/` — game memory analysis (seed-014) |
+| IL2CPP Dumper / dnSpy | `reverse-engineering/` — Unity/Mono game reverse (seed-014) |
 | LLM symbol migration / BinDiff alternative | `binary-diff/` — cross-version batch migration |
 | Nmap / Masscan | `pentest-tools/` — port scan, service identification |
 | Nuclei / ZAP / Nikto | `pentest-tools/` — vulnerability scanning |
