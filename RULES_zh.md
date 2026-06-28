@@ -159,7 +159,10 @@
 
 ### 工具使用
 - **永远不要猜工具路径**，先读 `tool-index.md`
-- 缺少工具时先调用 `bootstrap-reverse.ps1` 自动补齐，不要直接报错
+- 缺少工具时先调用平台对应的 bootstrap 脚本自动补齐，不要直接报错：
+  - Windows：`bootstrap-reverse.ps1`
+  - Linux / macOS：`bash skills/scripts/bootstrap-reverse.sh`
+  - Kali Linux：`bash kali/scripts/bootstrap-reverse.sh`
 - 同一工具自动安装失败 2 次后，停止重试，输出完整手动安装步骤
 - MCP 服务端口不一致时，询问用户实际端口，帮用户更新配置
 
@@ -208,7 +211,7 @@
 4. 读 routing.md → 确定进入哪个子 skill
 5. 如果路由未命中 → 联网搜索该领域方法论 → 提议新增 skill
 6. 读 tool-index.md → 确认本机工具状态
-7. 如果缺工具 → 调用 bootstrap-reverse.ps1 自动补齐
+7. 如果缺工具 → 调用平台对应的 bootstrap 脚本自动补齐（Windows 用 `bootstrap-reverse.ps1`，Linux / macOS 用 `bash skills/scripts/bootstrap-reverse.sh`，Kali 用 `bash kali/scripts/bootstrap-reverse.sh`）
 8. 进入对应 skill 的工作流 → 执行任务（产生实际副作用）
    ─ 对操作犹豫时 → 读 precedent-reverse.md 或 precedent-pentest.md
    ─ 想跳过步骤/偷懒时 → 读 agent-obedience-engineering.md 借口反驳表
@@ -269,7 +272,7 @@
 | bootstrap 失败，原因不明 | 输出已知信息 + 建议检查网络/权限，等确认 |
 | 服务端口不一致 | 询问实际端口，帮用户更新 MCP 配置 |
 | 同一工具失败 2 次 | 明确告知"自动安装无法完成"，给完整手动步骤，不再重试 |
-| 用户确认已手动安装 | 重新运行 refresh-tool-index.ps1 验证，然后继续 |
+| 用户确认已手动安装 | 重新运行 refresh-tool-index.ps1（Linux / macOS 用 `bash skills/scripts/refresh-tool-index.sh`）验证，然后继续 |
 | 分析方向走不通 | 不要死磕，换一条路径（静态↔动态、Java↔Native、IDA↔r2） |
 | 任务超出能力范围 | 明确告知用户当前限制，建议人工介入的具体环节 |
 | MCP 工具调用报错 | 检查服务是否在线（端口探测），不在线则尝试启动或引导用户 |
@@ -319,7 +322,7 @@ AI Agent 在遇到阻力时会自动生成"合理借口"来跳过步骤。以下
 | "为了节省时间，我可以并行跳过..." | **节省时间的正确方式是并行执行独立步骤，不是跳过步骤。** 两个步骤互不依赖 → 并行；依赖 → 顺序。不要混淆。 |
 | "这个工具我以前用过，知道路径" | **禁止猜测路径。** 必须从 tool-index 获取实际路径。不同机器安装位置不同，你的训练数据是过时的。 |
 | "任务已经基本完成了，不需要 checklist" | **任务完成的唯一定义 = Checklist 全部打勾。** 未完成 Checklist 的任务不算完成，即使代码已经生成。 |
-| "我没找到 tool-index，我就直接猜路径" | **缺文件比猜错路径安全。** tool-index 缺失时先运行 `refresh-tool-index.ps1` 生成。猜错路径导致的错误更难排查。 |
+| "我没找到 tool-index，我就直接猜路径" | **缺文件比猜错路径安全。** tool-index 缺失时先运行 `refresh-tool-index.ps1`（Linux / macOS 用 `bash skills/scripts/refresh-tool-index.sh`）生成。猜错路径导致的错误更难排查。 |
 | "用户没明确说要报告，我就不写了" | **报告是默认行为。** 安全/逆向任务完成后必须生成报告，除非用户明确说"不要报告"。 |
 | "这个太简单了不需要记录 journal" | **简单任务也有踩坑价值。** 至少记录：目标类型 + 用了什么 + 有无意外。一行也行，但必须写。 |
 | "我先回复用户，等用户确认后再继续" | **不需要等确认。** 如果路由已明确且下一步是确定性的（如安装工具、读取文件），直接执行同时告知用户。不要在每一步都等用户点头。 |
@@ -454,16 +457,44 @@ gamma -> --destructive false
 
 ## Bootstrap 命令
 
+Windows（PowerShell）：
+
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File "<本包根目录>/skills/scripts/bootstrap-reverse.ps1" -Capability @('工具名') -StartServices
+```
+
+Linux / macOS（Bash）：
+
+```bash
+bash <本包根目录>/skills/scripts/bootstrap-reverse.sh 工具名 --start-services
+```
+
+Kali Linux（Bash，含 Kali 原生工具链）：
+
+```bash
+bash <本包根目录>/kali/scripts/bootstrap-reverse.sh 工具名 --start-services
 ```
 
 支持的能力名：jadx、apktool、frida、idalib-mcp、jshookmcp、anything-analyzer、idapro、r2、rabin2、adb、agent-browser、ghidra-mcp、nmap、proxycat、burpsuite-mcp、binwalk、unblob、emba、firmadyne、qemu-static、pwntools、ropgadget、one_gadget、bindiff、ghidriff、syswhispers3、pe-sieve、garak、pyrit、osv-scanner、trivy、syft、gitleaks、objection、yara、floss
 
 ## 刷新工具索引
 
+Windows（PowerShell）：
+
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File "<本包根目录>/skills/scripts/refresh-tool-index.ps1"
+```
+
+Linux / macOS（Bash）：
+
+```bash
+bash <本包根目录>/skills/scripts/refresh-tool-index.sh
+```
+
+Kali Linux（Bash）：
+
+```bash
+bash <本包根目录>/kali/scripts/refresh-tool-index.sh
 ```
 
 ## 新增 Skill
