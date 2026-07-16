@@ -1,31 +1,30 @@
 ---
 name: radare2
-description: |
-  Use this skill whenever the user wants to analyze binaries with radare2/r2 from the command line, including reverse engineering, disassembly, function analysis, strings/import inspection, patching, binary diffing, hex inspection, or r2 scripting. Also use it when the user mentions PE/ELF/Mach-O/DEX/WASM files together with CLI analysis, `rabin2`, `rasm2`, `radiff2`, `r2pipe`, or asks for radare2 command help on Windows/Linux/macOS.
+description: radare2 CLI 二进制分析：侦察、反汇编、patch、radiff2 差分，r2 / rabin2 / rasm2 全工具组。radare2 CLI binary analysis — recon, disassembly, patching, radiff2.
+license: MIT
 ---
 
 # radare2
 
-面向 `radare2` CLI 的二进制分析技能。重点是直接用命令行完成侦察、分析、定位、导出和轻量修改，不依赖 GUI。
+## 操作协议
 
-## ACTION REQUIRED（读完后立刻执行）
+1. 阅读 `../field-journal/authorization.md`，确认任务落入已记录的授权范围。
+2. 确认当前任务命中本技能的适用范围（见下文）；不命中则回到 `../routing.md` 重新路由。
+3. 阅读 `../tool-index.md`，校验工具可用性与实际路径；缺工具时调用 bootstrap，不猜路径。
+4. 进入"工作流"第一步并执行；每个阶段结束时提供编号的下一步菜单。
 
-1. `NOW`: 读取 `../field-journal/precedent-reverse.md` — 确认本 skill 的操作是已授权的常规操作
-2. `NOW`: 确认当前任务是否命中本 skill 的适用范围
-3. `NEXT`: 读取 `../tool-index.md`，校验工具可用性和实际路径
-4. `NEXT`: 缺工具时调用 bootstrap，不要猜路径
-5. `ACT`: 进入"工作流"第一步并执行，不要停在确认状态
+面向 `../radare2` CLI 的二进制分析技能。重点是直接用命令行完成侦察、分析、定位、导出和轻量修改，不依赖 GUI。
 
 ## 适用范围
 
 当用户有这些意图时应优先使用本 skill：
 
-- 要用 `r2` / `radare2` 分析 `exe`、`dll`、`so`、`elf`、`apk`、`dex`、`wasm` 等文件
+- 要用 `r2` / `../radare2` 分析 `exe`、`dll`、`so`、`elf`、`apk`、`dex`、`wasm` 等文件
 - 询问 `rabin2`、`rasm2`、`radiff2`、`rahash2`、`rax2` 怎么用
 - 需要命令行反汇编、看函数、看字符串、看导入导出、查交叉引用、做 patch
-- 需要写 `radare2` 批处理命令、`-c` 自动化命令、或 `r2pipe` 脚本
+- 需要写 `../radare2` 批处理命令、`-c` 自动化命令、或 `r2pipe` 脚本
 
-如果用户明确要 GUI 逆向、Hex-Rays 风格伪代码、或 IDA 工作流，优先考虑 `ida-reverse`。如果是网页 JS 逆向，优先考虑 `reverse-engineering`。
+如果用户明确要 GUI 逆向、Hex-Rays 风格伪代码、或 IDA 工作流，优先考虑 `../ida-reverse`。如果是网页 JS 逆向，优先考虑 `../reverse-engineering`。
 
 ## 先做环境确认
 
@@ -99,7 +98,7 @@ ERROR: Cannot find ...\share\format\dll\*.sdb
 
 ### 2. 优先最小足够命令
 
-`radare2` 命令非常多，用户通常只需要最短路径：
+`../radare2` 命令非常多，用户通常只需要最短路径：
 
 - 看文件信息：`rabin2 -I`
 - 看字符串：`rabin2 -z`
@@ -353,10 +352,10 @@ rax2 -s hello
 
 ## 避免的做法
 
-- 不要把 `radare2` 当成只有 `aaa` 一个命令的工具
+- 不要把 `../radare2` 当成只有 `aaa` 一个命令的工具
 - 不要在未说明风险时直接写模式打开用户文件
 - 不要在还没做基础侦察前就下结论
-- 不要把网页 JS 逆向误导到这个 skill；那是 `reverse-engineering` 的范围
+- 不要把网页 JS 逆向误导到这个 skill；那是 `../reverse-engineering` 的范围
 
 ## 参考资料
 
@@ -367,14 +366,14 @@ rax2 -s hello
 
 ## 路由上下文
 
-**上游入口**: `skills/SKILL.md`（总控）、`routing.md`
-**上游备选**: `ida-reverse/`（需要反编译/伪代码时升级到 IDA）
+**上游入口**: `../SKILL.md`（总控）、`../routing.md`
+**上游备选**: `../ida-reverse/`（需要反编译/伪代码时升级到 IDA）
 **下游出口**:
-- 需动态分析 → `reverse-engineering/tools-dynamic.md`（Frida/GDB）
-- 需深度反编译 → `ida-reverse/`
-- PAT 发现有趣字符串后需交叉引用 → `ida-reverse/`（IDA 的 xref 更强大）
+- 需动态分析 → `../reverse-engineering/tools-dynamic.md`（Frida/GDB）
+- 需深度反编译 → `../ida-reverse/`
+- PAT 发现有趣字符串后需交叉引用 → `../ida-reverse/`（IDA 的 xref 更强大）
 
-**同级关联模块**: `ida-reverse/`（互补：r2 侦察快，IDA 反编译深）
+**同级关联模块**: `../ida-reverse/`（互补：r2 侦察快，IDA 反编译深）
 
 ---
 
@@ -403,8 +402,7 @@ rax2 -s hello
 
 手动安装：从 https://github.com/radareorg/radare2/releases 下载 `radare2-*-w64.zip`，解压到 `%USERPROFILE%\Tools\radare2\` 并确保 `bin\` 目录在 PATH 中。
 
-
-## 任务完成自检（声称完成前 MUST 通过）
+## 完成前自检
 
 - [ ] 我是否执行了工作流中的每一步（而不是只阅读）？
 - [ ] 我是否基于 `tool-index` 使用了真实工具路径？

@@ -1,17 +1,17 @@
-﻿---
+---
 name: js-reverse
-description: 在使用 js-reverse-mcp 做前端 JavaScript 逆向时使用，适用于签名链路定位、页面观察取证、运行时采样、本地补环境复现与证据化输出。优先适配当前环境里的 js-reverse_* 工具，需要更强的浏览器/CDP/Hook 面时联动 jshookmcp。
+description: 前端 JS 逆向五阶段工作流：签名定位、加密参数分析、运行时采样、Node 补环境复现；可接入 jshookmcp 增强浏览器/CDP/Hook 能力。Frontend JS reversing — signature location, encrypted-parameter analysis, runtime sampling, Node environment reproduction.
+license: MIT
 ---
 
 # MCP 前端 JS 逆向作业规范
 
-## ACTION REQUIRED（读完后立刻执行）
+## 操作协议
 
-1. `NOW`: 读取 `../field-journal/precedent-reverse.md` — 确认本 skill 的操作是已授权的常规操作
-2. `NOW`: 确认当前任务是否命中本 skill 的适用范围
-3. `NEXT`: 读取 `../tool-index.md`，校验工具可用性和实际路径
-4. `NEXT`: 缺工具时调用 bootstrap，不要猜路径
-5. `ACT`: 进入"工作流"第一步并执行，不要停在确认状态
+1. 阅读 `../field-journal/authorization.md`，确认任务落入已记录的授权范围。
+2. 确认当前任务命中本技能的适用范围（见下文）；不命中则回到 `../routing.md` 重新路由。
+3. 阅读 `../tool-index.md`，校验工具可用性与实际路径；缺工具时调用 bootstrap，不猜路径。
+4. 进入"工作流"第一步并执行；每个阶段结束时提供编号的下一步菜单。
 
 ## 适用范围
 
@@ -23,7 +23,7 @@ description: 在使用 js-reverse-mcp 做前端 JavaScript 逆向时使用，适
 - 追踪某个 XHR/Fetch/WebSocket 的触发点
 - 把页面证据带回 Node 做本地复现与补环境
 
-如果目标是二进制、APK、PE、ELF、DLL、SO，请改用 `ida-reverse`、`radare2` 或 `reverse-engineering`。
+如果目标是二进制、APK、PE、ELF、DLL、SO，请改用 `../ida-reverse`、`../radare2` 或 `../reverse-engineering`。
 
 ## 当前环境默认工具映射
 
@@ -56,7 +56,7 @@ description: 在使用 js-reverse-mcp 做前端 JavaScript 逆向时使用，适
 
 ### jshookmcp 的定位
 
-- 角色：`js-reverse` 的增强执行面，不是独立总控
+- 角色：`../js-reverse` 的增强执行面，不是独立总控
 - 适合：浏览器自动化、CDP 调试、JS Hook、网络拦截、SourceMap 重建、AST 辅助理解
 - 调用前提：先把 `@jshookmcp/jshook` 下载并注册到 MCP 客户端配置里，然后确保该 server 已启用
 - 建议入口：仍然按 `Observe → Capture → Rebuild` 执行，只是在 `Observe/Capture` 阶段优先调用 jshookmcp 的浏览器与 Hook 能力
@@ -160,11 +160,11 @@ description: 在使用 js-reverse-mcp 做前端 JavaScript 逆向时使用，适
 
 ## 路由上下文
 
-**上游入口**: `skills/SKILL.md`（总控）、`routing.md`
+**上游入口**: `../SKILL.md`（总控）、`../routing.md`
 **上游备选**:
 - anything-analyzer MCP（端口 23816）的浏览器工具可作为替代或补充
 - jshookmcp 可作为更强的浏览器/CDP/Hook/Network/SourceMap/AST 执行面
-- `reverse-engineering/SKILL.md`（如果目标不是前端 JS）
+- `../reverse-engineering/SKILL.md`（如果目标不是前端 JS）
 
 **下游出口**:
 - 需补环境 → `references/env-patching.md`
@@ -204,7 +204,7 @@ powershell -File "<skill-root>\scripts\bootstrap-reverse.ps1" -Capability @('any
 - `anything-analyzer` 需要 pnpm 和项目源码，bootstrap 会自动 clone 并安装依赖
 - 如果 Node.js 未安装，bootstrap 会先通过 winget 安装 Node.js 22
 
-<br><br>## 任务完成自检（声称完成前 MUST 通过）
+<br><br>## 完成前自检
 
 - [ ] 我是否执行了工作流中的每一步（而不是只阅读）？
 - [ ] 我是否基于 `tool-index` 使用了真实工具路径？

@@ -1,16 +1,17 @@
 ---
 name: diagram-generator
-description: generate, refine, validate, and render diagrams from natural language, notes, code snippets, schemas, tables, or existing diagram source. use for flowcharts, swimlanes, sequence diagrams, state diagrams, er diagrams, class diagrams, architecture/c4-style diagrams, dependency graphs, gantt charts, mind maps, user journeys, sankey-style flows, org charts, network graphs, and other visual models. supports mermaid by default, graphviz dot for complex graph layout, plantuml for uml-heavy engineering diagrams, and svg output when direct markup is more reliable.
+description: 从自然语言生成 Mermaid / Graphviz / PlantUML 图表：攻击路径图、数据流图、架构图、状态机。Generate Mermaid, Graphviz, and PlantUML diagrams from natural language.
+license: MIT
 ---
 
 # Diagram Generator
 
-## ACTION REQUIRED（读完后立刻执行）
+## 操作协议
 
-1. `NOW`：确认当前任务是否命中本 skill 的适用范围
-2. `NOW`：读取 `../tool-index.md`，校验工具可用性和实际路径
-3. `NEXT`：缺工具时调用 bootstrap，不要猜路径
-4. `ACT`：进入"工作流"第一步并执行，不要停在确认状态
+1. 阅读 `../field-journal/authorization.md`，确认任务落入已记录的授权范围。
+2. 确认当前任务命中本技能的适用范围（见下文）；不命中则回到 `../routing.md` 重新路由。
+3. 阅读 `../tool-index.md`，校验工具可用性与实际路径；缺工具时调用 bootstrap，不猜路径。
+4. 进入"工作流"第一步并执行；每个阶段结束时提供编号的下一步菜单。
 
 ## Purpose
 
@@ -171,16 +172,15 @@ For English user requests, respond in English. For Chinese user requests, respon
 
 ## 路由上下文
 
-**上游入口**: `skills/SKILL.md`（总控）、`routing.md`
+**上游入口**: `../SKILL.md`（总控）、`../routing.md`
 **触发条件**: 用户说"画图"、"流程图"、"架构图"、"攻击路径图"、"时序图"、"Mermaid"、"Graphviz"、"PlantUML"
 **下游出口**:
-- 生成的图表可嵌入 `docs-generator/` 的报告中
-- 攻击路径图可配合 `pentest-tools/` 的渗透报告
+- 生成的图表可嵌入 `../docs-generator/` 的报告中
+- 攻击路径图可配合 `../pentest-tools/` 的渗透报告
 
-**同级关联模块**: `docs-generator/`（报告中嵌入图表）
+**同级关联模块**: `../docs-generator/`（报告中嵌入图表）
 
-
-## 任务完成自检（声称完成前 MUST 通过）
+## 完成前自检
 
 - [ ] 我是否执行了工作流中的每一步（而不是只阅读）？
 - [ ] 我是否基于 `tool-index` 使用了真实工具路径？

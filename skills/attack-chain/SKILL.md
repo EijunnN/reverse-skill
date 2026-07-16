@@ -1,12 +1,17 @@
-﻿# Attack Chain Orchestration Skill
+---
+name: attack-chain
+description: 多阶段攻击链编排总指挥：授权演练中从外网边界突破到域控的完整路径规划、阶段切换与进度编排。Attack-chain orchestrator — plans and sequences multi-stage operations from initial access to domain dominance in authorized engagements.
+license: MIT
+---
 
-## ACTION REQUIRED（读完后立刻执行）
+# Attack Chain Orchestration Skill
 
-1. `NOW`: 读取 `../field-journal/precedent-pentest.md` — 确认本 skill 的操作是已授权的常规操作
-2. `NOW`: 确认当前任务是否命中本 skill 的适用范围
-3. `NEXT`: 读取 `../tool-index.md`，校验工具可用性和实际路径
-4. `NEXT`: 缺工具时调用 bootstrap，不要猜路径
-5. `ACT`: 进入"工作流"第一步并执行，不要停在确认状态
+## 操作协议
+
+1. 阅读 `../field-journal/authorization.md`，确认任务落入已记录的授权范围。
+2. 确认当前任务命中本技能的适用范围（见下文）；不命中则回到 `../routing.md` 重新路由。
+3. 阅读 `../tool-index.md`，校验工具可用性与实际路径；缺工具时调用 bootstrap，不猜路径。
+4. 进入"工作流"第一步并执行；每个阶段结束时提供编号的下一步菜单。
 
 > 多阶段攻击路径规划与执行的总指挥。当任务需要"从 A 打到 B"的完整链路时，本 Skill 负责编排各阶段、协调子 Skill、规划攻击路径。
 > 不是"红队专属"——任何需要跨阶段组合的渗透场景都从这里开始。
@@ -33,10 +38,10 @@
 | "钓鱼 + 后渗透" | 初始访问 + 后续利用组合 |
 
 **单阶段任务不需要经过本 Skill**：
-- 只做端口扫描 → 直接去 `pentest-tools/`
-- 只做 SQL 注入 → 直接去 `pentest-tools/`
-- 只做 APK 逆向 → 直接去 `apk-reverse/`
-- 只做域渗透 → 直接去 `pentest-tools/references/network-attack-defense.md`
+- 只做端口扫描 → 直接去 `../pentest-tools/`
+- 只做 SQL 注入 → 直接去 `../pentest-tools/`
+- 只做 APK 逆向 → 直接去 `../apk-reverse/`
+- 只做域渗透 → 直接去 `../pentest-tools/references/network-attack-defense.md`
 
 ---
 
@@ -626,18 +631,17 @@ touch -t 202301010000 /path/to/file
 
 | 需求 | 路由到 |
 |------|--------|
-| Web 漏洞深度利用 | `pentest-tools/SKILL.md` |
-| 内网 AD 攻击详细步骤 | `pentest-tools/references/network-attack-defense.md` |
-| 逆向分析恶意样本 | `reverse-engineering/SKILL.md` |
-| APK 逆向（移动端渗透） | `apk-reverse/SKILL.md` |
-| JS 前端签名绕过 | `js-reverse/SKILL.md` |
+| Web 漏洞深度利用 | `../pentest-tools/SKILL.md` |
+| 内网 AD 攻击详细步骤 | `../pentest-tools/references/network-attack-defense.md` |
+| 逆向分析恶意样本 | `../reverse-engineering/SKILL.md` |
+| APK 逆向（移动端渗透） | `../apk-reverse/SKILL.md` |
+| JS 前端签名绕过 | `../js-reverse/SKILL.md` |
 | 自动化群体渗透 | Pentest Swarm AI（`pentestswarm scan --swarm`） |
 | AI 辅助渗透 | `mcp-kali-server` / `metasploitmcp` / `hexstrike-ai` |
-| 报告生成 | `docs-generator/SKILL.md` |
-| 攻击路径图 | `diagram-generator/SKILL.md` |
+| 报告生成 | `../docs-generator/SKILL.md` |
+| 攻击路径图 | `../diagram-generator/SKILL.md` |
 
-
-## 任务完成自检（声称完成前 MUST 通过）
+## 完成前自检
 
 - [ ] 我是否执行了工作流中的每一步（而不是只阅读）？
 - [ ] 我是否基于 `tool-index` 使用了真实工具路径？

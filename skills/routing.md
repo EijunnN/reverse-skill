@@ -1,14 +1,16 @@
-# Reverse Engineering Skill Routing Matrix
+# Skill Routing Matrix
 
-Route tasks to the most appropriate skill module by target type, user intent, and toolchain.
+> 中文版本：[routing_zh.md](routing_zh.md)
 
-## CRITICAL: Routing Execution Protocol
+Route each task to the most appropriate skill module along three axes: **target type**, **user intent**, and **toolchain**.
 
-1. **MUST** complete routing BEFORE executing. Do NOT "do first, route later".
-2. **MUST** match ALL three dimensions (target type + user intent + toolchain) before entering a skill.
-3. If route not matched → propose new skill, do NOT force-fit.
-4. Cross-module tasks → combine skills per "Path Crossing" section.
-5. After routing, read the target skill's SKILL.md BEFORE taking action.
+## Routing Protocol
+
+1. Complete routing **before** executing — never "do first, route later".
+2. Match all three axes before entering a skill.
+3. Route not matched → propose a new skill; do not force-fit (see "Route Not Matched").
+4. Cross-module tasks → combine skills per "Path Crossing".
+5. After routing, read the target skill's `SKILL.md` before taking action.
 
 ## By Target Type
 
@@ -19,7 +21,7 @@ Route tasks to the most appropriate skill module by target type, user intent, an
 | JavaScript / Web frontend | `js-reverse/` — 5-stage workflow | anything-analyzer MCP browser tools, or jshookmcp CDP/Hook |
 | HTTP capture / browser sampling / request replay | anything-analyzer MCP (23816) | `js-reverse/`, jshookmcp, or `competition-web-runtime/` |
 | Firmware / IoT | `reverse-engineering/platforms.md` — binwalk/ARM/MIPS | `reverse-engineering/tools.md` — Ghidra headless |
-| WASM / Python bytecode / .NET / **DSL VM / 自定义虚拟机** | `dsl-vm-reverse/SKILL.md` — 分析 IIFE + 单字母变量 + switch-case opcode 的 JS 型自定义虚拟机 | `reverse-engineering/languages.md` — 标准 WASM 二进制用 `languages.md` 处理 |
+| WASM / Python bytecode / .NET / **DSL VM / 自定义虚拟机** | `reverse-engineering/dsl-vm-reverse/SKILL.md` — 分析 IIFE + 单字母变量 + switch-case opcode 的 JS 型自定义虚拟机 | `reverse-engineering/languages.md` — 标准 WASM 二进制用 `languages.md` 处理 |
 | macOS / iOS | `reverse-engineering/platforms.md` — Mach-O/ObjC/Swift | `mobile-reverse/` for iOS-specific |
 | Game (Unity) | `reverse-engineering/` — engine reverse, anti-cheat, IL2CPP/Mono (see seed-014) | `ida-reverse/` deep analysis |
 | Memory dump / PCAP | `reverse-engineering/platforms.md` | `reverse-engineering/patterns*.md` |
@@ -45,9 +47,9 @@ Route tasks to the most appropriate skill module by target type, user intent, an
 
 | User Says | Route To |
 |-----------|----------|
-| "DSL VM / 自定义指令集 / 风控引擎逆向" | `dsl-vm-reverse/SKILL.md` — 自定义 VM 逆向（IIFE + switch-case opcode） |
-| "fireye / fireyejs / getToken 逆向" | `dsl-vm-reverse/SKILL.md` — DSL VM 运行时捕获 |
-| "582KB JS 文件不是 WASM / 大 JS 文件逆向" | `dsl-vm-reverse/SKILL.md` — 先识别是否为 DSL VM |
+| "DSL VM / 自定义指令集 / 风控引擎逆向" | `reverse-engineering/dsl-vm-reverse/SKILL.md` — 自定义 VM 逆向（IIFE + switch-case opcode） |
+| "fireye / fireyejs / getToken 逆向" | `reverse-engineering/dsl-vm-reverse/SKILL.md` — DSL VM 运行时捕获 |
+| "582KB JS 文件不是 WASM / 大 JS 文件逆向" | `reverse-engineering/dsl-vm-reverse/SKILL.md` — 先识别是否为 DSL VM |
 | "decompile / IDA analyze" | `ida-reverse/SKILL.md` — IDA MCP workflow |
 | "recover source / disassemble" | `reverse-engineering/SKILL.md` + `ida-reverse/` |
 | "Frida hook / dynamic inject" | `reverse-engineering/tools-dynamic.md` — Frida section |
@@ -137,7 +139,7 @@ Route tasks to the most appropriate skill module by target type, user intent, an
 | "opaque predicate / 不透明谓词去除" | `reverse-engineering/references/ollvm-deobfuscation.md` — 符号执行去除 |
 | "Hikari deobfuscate / 字符串加密恢复" | `reverse-engineering/references/ollvm-deobfuscation.md` — Hikari 变种处理 |
 | "pwn / stack overflow / ROP / ret2libc" | `reverse-engineering/patterns-ctf*.md` + pwntools |
-| "Agent not working / AI lazy / skip steps" | `llm-security/references/agent-obedience-engineering.md` |
+| "Agent not working / AI skips steps" | `llm-security/references/agent-steering-engineering.md` — instruction-reliability patterns |
 | "MSF stuck / orphan process / MSF protocol" | `pentest-tools/references/msf-protocol.md` |
 | "anonymize / placeholder / writeup desensitize" | `field-journal/anonymization.md` |
 | "Hydra / online brute force" | `pentest-tools/SKILL.md` — online password attack |
@@ -258,9 +260,9 @@ Frontend JS Reverse Path:
   js-reverse/references/env-patching.md
 
 DSL VM Reverse Path:
-  dsl-vm-reverse/SKILL.md → identify DSL VM (IIFE + single-letter vars + DG() switch-case)
+  reverse-engineering/dsl-vm-reverse/SKILL.md → identify DSL VM (IIFE + single-letter vars + DG() switch-case)
   ↓ Extract opcode table & constant table
-  dsl-vm-reverse/SKILL.md Phase 2-4 → opcode classification, C[9] constant analysis
+  reverse-engineering/dsl-vm-reverse/SKILL.md Phase 2-4 → opcode classification, C[9] constant analysis
   ↓ If runtime capture needed
   browser-automation/ → Playwright/Selenium CDP injection
   ↓ If pure API protocol needed
@@ -284,9 +286,9 @@ Web Pentest + BurpSuite MCP Path:
 ```
 
 
-## 任务完成自检（声称完成前 MUST 通过）
+## Pre-Completion Self-Check
 
-- [ ] 我是否完成了路由三轴匹配（目标类型 + 用户意图 + 工具链）？
-- [ ] 我是否在路由成功后读取了目标 skill 的 SKILL.md？
-- [ ] 路由未命中时，我是否提议了新增 skill 而非强行匹配？
-- [ ] 我是否基于 `tool-index` 使用了真实工具路径？
+- [ ] Routing matched all three axes (target type + user intent + toolchain)
+- [ ] The target skill's `SKILL.md` was read after routing
+- [ ] Unmatched routes produced a new-skill proposal, not a force-fit
+- [ ] Tool paths came from `tool-index.md`, not from memory

@@ -1,6 +1,6 @@
-﻿# 逆向/渗透/安全任务自动路由规则（Kali Linux 版）
+# 运行规则 — 安全任务自动路由（Kali Linux 版）
 
-> **本文件是 Kali Linux 环境下的规则源。** 与 Windows 版 `RULES.md` 功能完全一致，仅脚本命令和路径约定适配 Linux。
+> **本文件是 Kali Linux 环境下的规则来源。** 与 `RULES.md` 功能一致，仅脚本命令与路径约定适配 Linux。
 > 核心知识库（skills/routing.md、SKILL.md、references）与 Windows 版共享，不重复维护。
 
 ---
@@ -42,7 +42,7 @@
 - LLM 安全、AI 安全测试、Prompt 注入、jailbreak、越狱、Agent 安全、garak、PyRIT
 - API 安全测试、GraphQL 安全、JWT 攻击、供应链安全、SBOM、Trivy
 - iOS 逆向、Objection、YARA、恶意软件分析、AI 反编译、LLM4Decompile
-- Agent 不干活、AI 懒、跳过步骤、Prompt 工程、Agent 服从性
+- Agent 不干活、跳过步骤、Prompt 工程、Agent 引导工程
 - EDR 绕过、AV bypass、免杀、unhook、direct syscall、indirect syscall、Hell's Gate、SysWhispers、ETW patch、AMSI patch、call stack spoofing、MITRE T1562、CrowdStrike 绕过、Defender 绕过、SentinelOne 绕过、pe-sieve
 - 端口扫描、Nmap、漏洞扫描、Nuclei、SQL 注入、SQLMap、目录爆破、FFUF、密码破解、Hashcat、Hydra、Metasploit、Impacket、pentestMCP
 - SRC、Bug Bounty、众测、漏洞赏金、HackerOne、WAF bypass、绕过 WAF、IDOR、越权、任意账号
@@ -269,7 +269,7 @@ AI 在 Kali 2026.1 环境下应该知道：
 
 ---
 
-## 禁止行为（与 Windows 版一致）
+## 反模式（禁止）
 
 - ❌ 不要在没有读 routing.md 的情况下直接开始逆向/渗透操作
 - ❌ 不要猜测工具路径，必须从 tool-index 获取
@@ -283,7 +283,7 @@ AI 在 Kali 2026.1 环境下应该知道：
 
 ---
 
-## 任务完成后的硬性 Checklist（不可跳过）
+## 任务完成 Checklist
 
 当任务执行完毕（漏洞已验证/逆向已完成/flag 已拿到）后，AI **必须**逐项执行：
 

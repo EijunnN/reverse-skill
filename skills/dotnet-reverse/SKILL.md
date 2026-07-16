@@ -1,14 +1,17 @@
 ---
 name: dotnet-reverse
-description: .NET / C# 二进制逆向。当目标是 .NET assembly（PE 头含 CLR、.exe/.dll 托管程序）、C# 编译产物（含 NativeAOT）、红队 Sharp* 工具（Rubeus / SharpHound / SharpHound 等）、.NET 混淆程序（ConfuserEx / SmartAssembly / Babel / Eazfuscator）、.NET loader / info-stealer / 套壳 malware 时使用。优先用 dnSpyEx + de4dot，需要 AI 直接操作时联动 dnSpy MCP。不用于纯 native 二进制（走 reverse-engineering / ida-reverse）。
+description: .NET / C# 托管程序集逆向：dnSpyEx 反编译、de4dot 脱混淆（ConfuserEx / SmartAssembly / Babel）、IL patch、Sharp* 红队工具分析。.NET assembly reversing — dnSpyEx decompile, de4dot deobfuscation, IL patching.
 license: MIT
-compatibility: Requires a filesystem-based code agent or CLI with shell access, Windows host preferred (dnSpyEx 是 Windows GUI)；Linux/macOS 可用 ILSpy/de4dot CLI + mono/dotnet runtime。
-allowed-tools: Bash Read Write Edit Glob Grep Task WebFetch WebSearch
-metadata:
-  user-invocable: "false"
 ---
 
 # .NET / C# 逆向作业规范
+
+## 操作协议
+
+1. 阅读 `../field-journal/authorization.md`，确认任务落入已记录的授权范围。
+2. 确认当前任务命中本技能的适用范围（见下文）；不命中则回到 `../routing.md` 重新路由。
+3. 阅读 `../tool-index.md`，校验工具可用性与实际路径；缺工具时调用 bootstrap，不猜路径。
+4. 进入"工作流"第一步并执行；每个阶段结束时提供编号的下一步菜单。
 
 ## 适用范围
 
@@ -19,9 +22,9 @@ metadata:
 - 脱混淆 ConfuserEx / SmartAssembly / Babel / Eazfuscator / .NET Reactor 等壳
 - 逆向 .NET loader / info-stealer / RAT 的解密与 C2 逻辑
 - 对 C# 程序做 patch（改判断、改常量、keygen）
-- 分析 IL2CPP 之前的 Mono/Unity 托管层（注意：IL2CPP 编译后是 native，走 `reverse-engineering/` + seed-014）
+- 分析 IL2CPP 之前的 Mono/Unity 托管层（注意：IL2CPP 编译后是 native，走 `../reverse-engineering/` + seed-014）
 
-如果目标是纯 native 二进制（C/C++/Go/Rust 编译、无 CLR），请改用 `reverse-engineering/`、`ida-reverse/` 或 `radare2/`。
+如果目标是纯 native 二进制（C/C++/Go/Rust 编译、无 CLR），请改用 `../reverse-engineering/`、`../ida-reverse/` 或 `../radare2/`。
 
 ## 核心原则
 
@@ -68,7 +71,7 @@ strings target.exe | grep -iE "mscoree|_CorExeMain|mscorlib|System\\."
 - `#~`、`#Strings`、`#US`、`#GUID`、`#Blob` metadata 流
 - `mscorlib` / `System.Private.CoreLib` 字符串
 
-**NativeAOT 例外：** 编译成 native，没有 CLR 头，但有 `System.Private.CoreLib` 字符串和重构过的类型元数据 —— 这类走 `reverse-engineering/`（IDA/r2），本 skill 仅做识别提示。
+**NativeAOT 例外：** 编译成 native，没有 CLR 头，但有 `System.Private.CoreLib` 字符串和重构过的类型元数据 —— 这类走 `../reverse-engineering/`（IDA/r2），本 skill 仅做识别提示。
 
 ### 2. Detect（检测混淆器）
 
@@ -151,23 +154,23 @@ File → Save Module → 替换原文件
 
 ## 何时切出
 
-- IL2CPP 编译的 Unity 游戏 → `reverse-engineering/` + `seed-014_unity-il2cpp-reverse.md`（IL2CPP 是 native，不走 dnSpy）
-- NativeAOT 产物 → `reverse-engineering/`（同上，native）
-- 纯 native PE（无 CLR）→ `reverse-engineering/` / `ida-reverse/`
-- 需要符号/函数批量迁移到别的版本 → `binary-diff/`
-- 需要画攻击路径 / 调用链图 → `diagram-generator/`
+- IL2CPP 编译的 Unity 游戏 → `../reverse-engineering/` + `../field-journal/seed-014_unity-il2cpp-reverse.md`（IL2CPP 是 native，不走 dnSpy）
+- NativeAOT 产物 → `../reverse-engineering/`（同上，native）
+- 纯 native PE（无 CLR）→ `../reverse-engineering/` / `../ida-reverse/`
+- 需要符号/函数批量迁移到别的版本 → `../binary-diff/`
+- 需要画攻击路径 / 调用链图 → `../diagram-generator/`
 
 ## 路由上下文
 
-**上游入口**: `skills/SKILL.md`（总控）、`routing.md`
+**上游入口**: `../SKILL.md`（总控）、`../routing.md`
 **下游出口**:
-- IL2CPP / NativeAOT（native）→ `reverse-engineering/`
-- 深度 native .so/.dll 段分析 → `ida-reverse/` / `radare2/`
+- IL2CPP / NativeAOT（native）→ `../reverse-engineering/`
+- 深度 native .so/.dll 段分析 → `../ida-reverse/` / `../radare2/`
 - 需要 AI 直接操作 dnSpy → 注册并联动 dnSpy MCP（见 `references/sharp-tools.md`）
 
 **同级关联模块**:
-- `reverse-engineering/languages-compiled.md`（.NET 简介指向本模块）
-- `apk-reverse/`（Xamarin/MAUI Android 逆向可切回本模块看 C# 层）
+- `../reverse-engineering/languages-compiled.md`（.NET 简介指向本模块）
+- `../apk-reverse/`（Xamarin/MAUI Android 逆向可切回本模块看 C# 层）
 
 ## 参考文档
 

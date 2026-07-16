@@ -1,8 +1,21 @@
-# 🔄 DSL 自定义虚拟机逆向（DSL VM Reverse Engineering）
+---
+name: dsl-vm-reverse
+description: JavaScript 自定义指令集虚拟机逆向：分析 IIFE + 单字母变量 + switch-case 解释器 + opcode 控制流的 JS 型 VM（风控引擎、自定义验证码 VM 等非标准 WASM）。Reverse custom JavaScript instruction-set VMs — IIFE-wrapped switch-case interpreters used by risk-control engines and custom captcha VMs.
+license: MIT
+---
+
+# DSL 自定义虚拟机逆向（DSL VM Reverse Engineering）
 
 > 用于逆向基于 JavaScript 实现的自定义 WASM 虚拟机/风控引擎
 
 ---
+
+## 操作协议
+
+1. 阅读 `../../field-journal/authorization.md`，确认任务落入已记录的授权范围。
+2. 确认目标符合下文的 DSL VM 识别特征；不符合则回到 `../../routing.md` 重新路由。
+3. 阅读 `../../tool-index.md`，校验工具可用性与实际路径；缺工具时调用 bootstrap，不猜路径。
+4. 进入"通用逆向工作流"第一步并执行；每个阶段结束时提供编号的下一步菜单。
 
 ## 目录
 
@@ -32,10 +45,10 @@
 
 | 条件 | 非本 skill | 转至 |
 |------|-----------|------|
-| 文件以 `\x00asm` 开头 | 标准 WASM 二进制 | `reverse-engineering/languages.md` |
+| 文件以 `\x00asm` 开头 | 标准 WASM 二进制 | `../../reverse-engineering/languages.md` |
 | 文件以 `Uint8Array([0,97,115,109])` 含 WASM 魔术字 | WASM 嵌入式 | 提取 .wasm 后转 IDA/Ghidra |
 | 标准 Webpack 打包（`function(e,t,n){...}`） | 普通 JS | `js-reverse/` |
-| 零字节占比 > 20% | WASM 二进制 | `reverse-engineering/languages.md` |
+| 零字节占比 > 20% | WASM 二进制 | `../../reverse-engineering/languages.md` |
 
 ---
 
@@ -336,7 +349,7 @@ async function run() {
 
 ---
 
-## 7. Skill 自检清单
+## 7. 完成前自检
 
 - [ ] 我是否完成了 DSL VM 识别（IIFE + 单字母变量 + DG() 解释器）？
 - [ ] 我是否提取了变量映射表（`var X=数字`）？
@@ -353,7 +366,7 @@ async function run() {
 
 | 类型 | 路由 |
 |------|------|
-| **目标类型**: WASM / DSL VM / 自定义指令集 | `dsl-vm-reverse/SKILL.md` |
+| **目标类型**: WASM / DSL VM / 自定义指令集 | `../../reverse-engineering/dsl-vm-reverse/SKILL.md` |
 | **用户意图**: "DSL VM / 风控引擎逆向" | 本 skill |
 | **工具链**: Playwright / Selenium CDP | 浏览器注入方案 |
 

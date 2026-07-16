@@ -1,21 +1,17 @@
 ---
 name: binary-diff
-description: |
-  跨版本符号迁移与二进制差分。当你有旧版本的符号/逆向结果，需要快速迁移到新版本时使用。
-  适用场景：内核缺 PDB 用旧版符号推导、程序更新后批量迁移函数名、应用更新后快速定位新偏移。
-  核心方法：用 LLM 做结构化差异比对，程序化输入输出，成本极低（200 函数 ~1 元）。
-  触发关键词：符号迁移、bindiff、跨版本、PDB 缺失、函数偏移迁移、symbol migration、binary diff、版本对比。
+description: 跨版本符号迁移与二进制差分：旧版符号批量迁移到新版、缺 PDB 推导、程序更新后函数名迁移（BinDiff / Diaphora / ghidriff / LLM 批量迁移）。Cross-version symbol migration and binary diffing.
+license: MIT
 ---
 
 # 跨版本符号迁移 (Binary Diff)
 
-## ACTION REQUIRED（读完后立刻执行）
+## 操作协议
 
-1. `NOW`: 读取 `../field-journal/precedent-reverse.md` — 确认本 skill 的操作是已授权的常规操作
-2. `NOW`: 确认当前任务是否命中本 skill 的适用范围
-3. `NEXT`: 读取 `../tool-index.md`，校验工具可用性和实际路径
-4. `NEXT`: 缺工具时调用 bootstrap，不要猜路径
-5. `ACT`: 进入"工作流"第一步并执行，不要停在确认状态
+1. 阅读 `../field-journal/authorization.md`，确认任务落入已记录的授权范围。
+2. 确认当前任务命中本技能的适用范围（见下文）；不命中则回到 `../routing.md` 重新路由。
+3. 阅读 `../tool-index.md`，校验工具可用性与实际路径；缺工具时调用 bootstrap，不猜路径。
+4. 进入"工作流"第一步并执行；每个阶段结束时提供编号的下一步菜单。
 
 ## 适用范围
 
@@ -30,7 +26,7 @@ description: |
 
 | 场景 | 用什么 |
 |------|--------|
-| 从零开始逆向一个二进制 | `ida-reverse/` 或 `radare2/` |
+| 从零开始逆向一个二进制 | `../ida-reverse/` 或 `../radare2/` |
 | 有旧版结果，迁移到新版 | **本 skill** |
 | 两个完全不同的二进制对比 | BinDiff / Diaphora（传统工具） |
 
@@ -289,7 +285,7 @@ found_struct_offset → idapro_set_comments(addr=insn_va, comment="{struct_name}
 ### 说明
 
 本 skill 的核心不依赖重型工具安装，主要依赖：
-- IDA Pro 已有（用 `ida-reverse/` skill 管理）
+- IDA Pro 已有（用 `../ida-reverse/` skill 管理）
 - Python + requests/httpx（调 API）
 - 一个 LLM API endpoint
 
@@ -297,16 +293,15 @@ found_struct_offset → idapro_set_comments(addr=insn_va, comment="{struct_name}
 
 ## 路由上下文
 
-**上游入口**: `skills/SKILL.md`（总控）、`routing.md`
+**上游入口**: `../SKILL.md`（总控）、`../routing.md`
 **触发条件**: 有旧版符号/逆向结果，需要迁移到新版本
 **下游出口**:
-- 需要先打开二进制 → `ida-reverse/`
-- 需要快速侦察确认版本差异 → `radare2/`
+- 需要先打开二进制 → `../ida-reverse/`
+- 需要快速侦察确认版本差异 → `../radare2/`
 
-**同级关联模块**: `ida-reverse/`（数据导出和符号应用都通过 IDA）
+**同级关联模块**: `../ida-reverse/`（数据导出和符号应用都通过 IDA）
 
-
-## 任务完成自检（声称完成前 MUST 通过）
+## 完成前自检
 
 - [ ] 我是否执行了工作流中的每一步（而不是只阅读）？
 - [ ] 我是否基于 `tool-index` 使用了真实工具路径？

@@ -3,28 +3,25 @@
 </p>
 
 <h1 align="center">reverse-skill</h1>
-<h3 align="center">Cybersecurity Skills Router · 逆向技能路由包</h3>
+<h3 align="center">Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack</h3>
 
-<p align="center"><em style="font-family: Georgia, serif; font-size: 1.2em; color: #777;">Navigate the dark waters, sail against the stream.</em></p>
+<p align="center">AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base<br/>
+逆向/渗透/安全技能路由包 — AI 自动路由 · 按需自举工具链 · 自动进化经验库</p>
 
 <p align="center">
-  <a href="https://github.com/zhaoxuya520/reverse-skill/stargazers"><img src="https://img.shields.io/github/stars/zhaoxuya520/reverse-skill?style=flat&logo=github" alt="stars"></a>
-  <a href="https://github.com/zhaoxuya520/reverse-skill/forks"><img src="https://img.shields.io/github/forks/zhaoxuya520/reverse-skill?style=flat&logo=github" alt="forks"></a>
-  <a href="https://github.com/zhaoxuya520/reverse-skill/issues"><img src="https://img.shields.io/github/issues/zhaoxuya520/reverse-skill?style=flat&logo=github" alt="issues"></a>
+  <a href="https://github.com/EijunnN/reverse-skill/stargazers"><img src="https://img.shields.io/github/stars/EijunnN/reverse-skill?style=flat&logo=github" alt="stars"></a>
+  <a href="https://github.com/EijunnN/reverse-skill/forks"><img src="https://img.shields.io/github/forks/EijunnN/reverse-skill?style=flat&logo=github" alt="forks"></a>
+  <a href="https://github.com/EijunnN/reverse-skill/issues"><img src="https://img.shields.io/github/issues/EijunnN/reverse-skill?style=flat&logo=github" alt="issues"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="license"></a>
-</p>
-
-<p align="center">
-  <a href="https://trendshift.io/repositories/43969?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-43969" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/trendshift/repositories/43969/daily" alt="zhaoxuya520%2Freverse-skill | Trendshift" width="250" height="55"/></a>
 </p>
 
 <br/>
 
 <p align="center">
   <a href="#about">About</a> ·
-  <a href="#getting-started">Getting Started</a> ·
+  <a href="#quick-start">Quick Start</a> ·
   <a href="#usage">Usage</a> ·
-  <a href="skills/routing.md">Routing</a> ·
+  <a href="skills/routing.md">Routing Matrix</a> ·
   <a href="README_AI.md">AI Bootstrap</a> ·
   <a href="#contributing">Contributing</a>
 </p>
@@ -39,182 +36,162 @@
 
 ## About
 
-> **If you are an AI Agent, jump to [README_AI.md](README_AI.md) and follow the instructions strictly.**
+> **If you are an AI agent, read [README_AI.md](README_AI.md) and follow its bootstrap sequence exactly.**
 
-When an AI agent (Claude Code, Codex CLI, Cursor, etc.) encounters an APK, a binary, frontend JS encryption, a CTF challenge, or a pentesting target, this package routes it to the right methodology, checks available tools, and executes a repeatable workflow instead of guessing commands.
+When an AI agent (Claude Code, Codex CLI, Cursor, etc.) faces an APK, a binary, obfuscated frontend JS, a CTF challenge, or a pentest task, this system routes it to the right methodology first, then drives the local toolchain — instead of guessing commands.
 
 ```
-User task → RULES.md → Skill Router → Scenario Skill → Tools / MCP / Scripts → Report + field journal
+User task → RULES.md → Skill Router → Target Skill → Tools / MCP / Scripts → Report + Knowledge Base
 ```
 
-**Why this exists:**
-- AI agents don't know whether to use jadx, apktool, Frida, IDA, or BurpSuite for a given task
-- APK, ELF, JS, PCAP, and CTF tasks each need different playbooks
-- Tools, MCP servers, and scripts are scattered across machines
-- The same mistakes get repeated because experience isn't reused
+**Why this project exists:**
+
+- AI agents facing APK, ELF, JS, or PCAP don't know whether to reach for jadx, Frida, or IDA.
+- Tool paths, MCP services, and script entry points are scattered across machines and hard to migrate.
+- The same pitfalls get rediscovered on every task; hard-won experience never compounds.
 
 Full routing matrix: [skills/routing.md](skills/routing.md)
 
-<br/>
-
-<div align="center">
-  <a href="https://star-history.com/#zhaoxuya520/reverse-skill&Date">
-    <img src="https://api.star-history.com/svg?repos=zhaoxuya520/reverse-skill&type=Date" alt="Star History" width="650" />
-  </a>
-</div>
-
-<br/>
-
-<p align="right">(<a href="#about">back to top</a>)</p>
-
-### Built With
+### Tech Stack
 
 <p align="left">
   <img src="https://skillicons.dev/icons?i=py,nodejs,powershell,bash,java,docker,git&theme=light" /><br/>
   <code>IDA Pro</code> · <code>radare2</code> · <code>Ghidra</code>
 </p>
 
-<p align="right">(<a href="#about">back to top</a>)</p>
+<a id="quick-start"></a>
 
-<a id="getting-started"></a>
-
-## Getting Started
+## Quick Start
 
 ### Prerequisites
 
-- **Java / JDK** — for jadx and apktool
-- **Node.js 22.12+** — for JS toolchain and MCP servers
-- **Python 3.x** — for Frida and helper scripts
-- **A code AI client** — Claude Code, Codex CLI, Cursor, etc.
+- **Java / JDK** — runs jadx and apktool
+- **Node.js 22.12+** — JS toolchain and MCP services
+- **Python 3.x** — Frida and helper scripts
+- **An AI coding client** — Claude Code, Codex CLI, Cursor, etc.
 
-### Installation
+### Install
 
+```bash
+git clone https://github.com/EijunnN/reverse-skill.git
 ```
-git clone https://github.com/zhaoxuya520/reverse-skill.git
-```
 
-Then refresh the tool index per platform:
+### First Use
 
-| Platform | Command |
-|----------|---------|
-| Windows | `powershell -File skills/scripts/refresh-tool-index.ps1` |
-| Linux / macOS | `bash skills/scripts/refresh-tool-index.sh` |
-| Kali Linux | `bash kali/scripts/refresh-tool-index.sh` |
+> **For first deployment, simply have the AI read [README_AI.md](README_AI.md) — nothing else is required.**
 
-Check [skills/tool-index.md](skills/tool-index.md) to see detected tools.
+Platform-specific deployment guides:
 
-Platform-specific docs:
 - **Kali Linux** → [kali/README-kali.md](kali/README-kali.md)
-- **Ubuntu/Debian** → [docs/platforms/linux.md](docs/platforms/linux.md)
+- **Ubuntu / Debian** → [docs/platforms/linux.md](docs/platforms/linux.md)
 - **macOS** → [docs/platforms/macos.md](docs/platforms/macos.md)
-
-<p align="right">(<a href="#getting-started">back to top</a>)</p>
 
 <a id="usage"></a>
 
 ## Usage
 
-### Supported scenarios
+### Supported Scenarios
 
-| Scenario | Entry |
-|----------|-------|
-| APK / Android analysis | `skills/apk-reverse/` |
-| Binary reverse (exe/dll/so/elf) | `skills/ida-reverse/` / `skills/radare2/` |
-| Frontend JS / encrypted params | `skills/js-reverse/` |
-| HTTP capture / request replay | anything-analyzer + `js-reverse/` |
-| Penetration testing / scanning | `skills/pentest-tools/` |
-| CTF competition | `CTF-Sandbox-Orchestrator/` (40+ sub-skills) |
+| Scenario | Entry Point |
+|----------|-------------|
+| APK / Android reversing | `skills/apk-reverse/` |
+| Binary reversing (exe/dll/so/elf) | `skills/ida-reverse/` / `skills/radare2/` |
+| Frontend JS signatures / encrypted params | `skills/js-reverse/` |
+| HTTP capture / request replay | anything-analyzer + `skills/js-reverse/` |
+| Pentesting / vulnerability scanning | `skills/pentest-tools/` |
+| CTF competitions | `CTF-Sandbox-Orchestrator/` (40+ sub-skills) |
 | Firmware / IoT | `skills/firmware-pentest/` |
-| Patch diff / N-day | `skills/patch-diff-exploit/` |
-| Pwn / exploit development | `skills/pwn-chain/` |
-| EDR bypass | `skills/edr-bypass-re/` |
+| Patch diffing / N-day | `skills/patch-diff-exploit/` |
+| Pwn / exploitation | `skills/pwn-chain/` |
+| EDR bypass (authorized red team) | `skills/edr-bypass-re/` |
 | LLM / AI security | `skills/llm-security/` |
 | OLLVM deobfuscation | `skills/reverse-engineering/references/ollvm-deobfuscation.md` |
 | Diagrams / reports | `skills/diagram-generator/` / `skills/docs-generator/` |
 
-### Key files
+### Key Files
 
 | File | Purpose |
 |------|---------|
-| [README_AI.md](README_AI.md) | AI agent bootstrap and configuration |
-| [RULES.md](RULES.md) | Global routing rules |
-| [skills/routing.md](skills/routing.md) | Task → skill routing matrix |
-| [skills/SKILL.md](skills/SKILL.md) | Master entry point |
-| [skills/tool-index.md](skills/tool-index.md) | Local tool status (auto-generated) |
+| [README_AI.md](README_AI.md) | AI agent bootstrap guide (agents read this first) |
+| [RULES.md](RULES.md) | Global operating rules |
+| [skills/SKILL.md](skills/SKILL.md) | Master routing entry |
+| [skills/routing.md](skills/routing.md) | Routing matrix (scenario → skill) |
+| [skills/field-journal/authorization.md](skills/field-journal/authorization.md) | Authorization & rules of engagement record |
+| [skills/tool-index.md](skills/tool-index.md) | Local tool registry (auto-generated) |
 
-### Repository layout
+### Repository Layout
 
 ```
 .
-├── README.md              # Chinese entry
-├── README_EN.md           # This file — English entry
-├── README_AI.md           # AI agent bootstrap
-├── RULES.md               # Global routing rules
+├── README.md               # 中文版
+├── README_EN.md            # This file
+├── README_AI.md            # AI agent bootstrap guide
+├── RULES.md                # Global operating rules
+├── RULES_zh.md             # 全局运行规则（中文）
 ├── skills/
-│   ├── SKILL.md           # Master entry
-│   ├── routing.md         # Routing matrix
-│   ├── field-journal/     # Experience logs
-│   ├── apk-reverse/       # APK reverse
-│   ├── js-reverse/        # JS reverse
-│   ├── ida-reverse/       # IDA Pro workflow
-│   ├── radare2/           # radare2
-│   ├── reverse-engineering/ # General RE
-│   ├── pentest-tools/     # Penetration testing
-│   ├── pwn-chain/         # Exploit development
-│   ├── patch-diff-exploit/ # N-day
-│   ├── firmware-pentest/  # Firmware / IoT
-│   ├── edr-bypass-re/     # EDR bypass
-│   ├── binary-diff/       # Symbol migration
-│   ├── browser-automation/ # Browser / desktop
-│   ├── diagram-generator/ # Diagrams
-│   ├── docs-generator/    # Reports
-│   └── llm-security/      # LLM security
-├── CTF-Sandbox-Orchestrator/ # CTF skills
+│   ├── SKILL.md            # Master routing entry
+│   ├── routing.md          # Routing matrix
+│   ├── CONTRIBUTING.md     # Standard process for new skills
+│   ├── field-journal/      # Experience logs & authorization record
+│   ├── scripts/            # Bootstrap & tool-index scripts
+│   ├── apk-reverse/        # APK reversing
+│   ├── js-reverse/         # JS reversing
+│   ├── ida-reverse/        # IDA Pro workflows
+│   ├── radare2/            # radare2 analysis
+│   ├── reverse-engineering/ # General RE methodology
+│   ├── dotnet-reverse/     # .NET reversing
+│   ├── malware-analysis/   # Malware analysis
+│   ├── mobile-reverse/     # Mobile security (Android + iOS)
+│   ├── pentest-tools/      # Pentest toolchain
+│   ├── api-security/       # API security
+│   ├── supply-chain-security/ # Supply chain security
+│   ├── attack-chain/       # Attack chain orchestration
+│   ├── pwn-chain/          # Exploitation chains
+│   ├── patch-diff-exploit/ # N-day analysis
+│   ├── firmware-pentest/   # Firmware / IoT
+│   ├── edr-bypass-re/      # EDR bypass reversing
+│   ├── binary-diff/        # Symbol migration
+│   ├── browser-automation/ # Browser & desktop automation
+│   ├── diagram-generator/  # Diagram generation
+│   ├── docs-generator/     # Report generation
+│   └── llm-security/       # LLM / AI security
+├── CTF-Sandbox-Orchestrator/ # CTF sub-skills (40+)
 ├── docs/                     # Overview & architecture docs
-└── kali/                     # Kali scripts
+└── kali/                     # Kali helper scripts
 ```
-
-<p align="right">(<a href="#usage">back to top</a>)</p>
 
 <a id="contributing"></a>
 
 ## Contributing
 
-Contributions are welcome! Fork the repo, create a feature branch, and open a PR.
+Contributions are welcome. New skills must follow the standard process in [skills/CONTRIBUTING.md](skills/CONTRIBUTING.md); general improvements go through the usual PR flow:
 
-1. Fork the Project
+1. Fork the project
 2. `git checkout -b feature/AmazingFeature`
 3. `git commit -m 'Add some AmazingFeature'`
 4. `git push origin feature/AmazingFeature`
 5. Open a Pull Request
 
-### Contributors
-
-<a href="https://github.com/zhaoxuya520/reverse-skill/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=zhaoxuya520/reverse-skill" alt="contributors" />
-</a>
-
-<p align="right">(<a href="#contributing">back to top</a>)</p>
-
 <a id="license"></a>
 
-## ⚖️ License
+## License
 
-This project (`reverse-skill`) is primarily licensed under the **MIT License** (see [LICENSE](LICENSE)).
+The main body of this project is released under the **MIT License** (see [LICENSE](LICENSE)).
 
-**Submodule and third-party dependencies:**
+**Submodules and third-party dependencies:**
+
 - **CTF-Sandbox-Orchestrator/**: **GNU GPLv3**
-- **Pentest Swarm AI**: Original project is **AGPL-3.0**. This repo only invokes it via CLI or MCP and does not include its source code
-- Other tools (jadx, frida, nmap, burpsuite-mcp, etc.) are subject to their respective official licenses
+- **Pentest Swarm AI**: the upstream project is **AGPL-3.0**; this repository invokes it via CLI/MCP only and does not contain its source code
+- Other tools (jadx, frida, nmap, burpsuite-mcp, etc.) are governed by their own licenses
 
-<p align="right">(<a href="#license">back to top</a>)</p>
+## Disclaimer
 
-<a id="acknowledgments"></a>
+This skill pack is intended solely for **authorized** security research and testing (SRC / bug bounty programs, owned assets, contracted engagements, CTF ranges, public research). Users must ensure their operations are authorized by the target party and comply with applicable law. The authors and contributors accept no liability for misuse.
 
 ## Acknowledgments
 
-Thanks to all open-source tool authors. This project integrates tools across reverse engineering, penetration testing, CTF, and security analysis — every tool is the fruit of community effort.
+This project is forked from [zhaoxuya520/reverse-skill](https://github.com/zhaoxuya520/reverse-skill) — thanks to the original author and all upstream contributors. Thanks also to every open-source security tool author; each tool integrated here is a product of the community's collective expertise.
 
-Special thanks to the OLLVM deobfuscation ecosystem contributors and everyone who submitted test samples, issues, and PRs.
+## Contact
 
-<p align="right">(<a href="#acknowledgments">back to top</a>)</p>
+- **Issues**: [GitHub Issues](https://github.com/EijunnN/reverse-skill/issues)

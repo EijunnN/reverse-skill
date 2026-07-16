@@ -1,20 +1,17 @@
-﻿---
+---
 name: browser-automation
-description: |
-  统一自动化入口。覆盖浏览器自动化（Playwright）和 Windows 桌面应用自动化（OpenReverse）。
-  浏览器场景：打开网页、点击、填表、爬取、截图、自动化登录、渗透页面交互。
-  桌面场景：操作 IDA/x64dbg 等 GUI 工具、Windows UI Automation、视觉驱动交互、桌面应用网络抓包。
-  触发关键词：浏览器自动化、桌面自动化、打开网页、填表、爬取、截图、自动化登录、Playwright、agent-browser、headless、OpenReverse、UIA、CUA、桌面操作、Windows 自动化。
+description: 浏览器自动化（Playwright）与 Windows 桌面自动化（UIA）：安全测试中的页面操作、流量观察、自动登录与采样。Browser and Windows desktop automation for security testing — page operations, traffic observation, sampling.
+license: MIT
 ---
 
 # 自动化操作 (Desktop & Browser Automation)
 
-## ACTION REQUIRED（读完后立刻执行）
+## 操作协议
 
-1. `NOW`：确认当前任务是否命中本 skill 的适用范围
-2. `NOW`：读取 `../tool-index.md`，校验工具可用性和实际路径
-3. `NEXT`：缺工具时调用 bootstrap，不要猜路径
-4. `ACT`：进入"工作流"第一步并执行，不要停在确认状态
+1. 阅读 `../field-journal/authorization.md`，确认任务落入已记录的授权范围。
+2. 确认当前任务命中本技能的适用范围（见下文）；不命中则回到 `../routing.md` 重新路由。
+3. 阅读 `../tool-index.md`，校验工具可用性与实际路径；缺工具时调用 bootstrap，不猜路径。
+4. 进入"工作流"第一步并执行；每个阶段结束时提供编号的下一步菜单。
 
 ## 适用范围
 
@@ -223,18 +220,17 @@ npm run doctor:network
 
 ## 路由上下文
 
-**上游入口**: `skills/SKILL.md`（总控）、`routing.md`
+**上游入口**: `../SKILL.md`（总控）、`../routing.md`
 **适用场景**: 任何需要自动化操作浏览器或桌面应用的任务
 **下游出口**:
-- 抓到的请求需要分析 → `anything-analyzer` 或 `js-reverse`
+- 抓到的请求需要分析 → `anything-analyzer` 或 `../js-reverse`
 - 需要 JS 调试/Hook → `jshookmcp`
-- 需要还原签名算法 → `js-reverse`
-- 桌面应用是逆向工具 → `ida-reverse/`
+- 需要还原签名算法 → `../js-reverse`
+- 桌面应用是逆向工具 → `../ida-reverse/`
 
-**同级关联模块**: `js-reverse`（浏览器操作后可能需要分析 JS）、`ida-reverse`（OpenReverse 可以自动化操作 IDA GUI）
+**同级关联模块**: `../js-reverse`（浏览器操作后可能需要分析 JS）、`../ida-reverse`（OpenReverse 可以自动化操作 IDA GUI）
 
-
-## 任务完成自检（声称完成前 MUST 通过）
+## 完成前自检
 
 - [ ] 我是否执行了工作流中的每一步（而不是只阅读）？
 - [ ] 我是否基于 `tool-index` 使用了真实工具路径？

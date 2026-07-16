@@ -1,14 +1,14 @@
 ---
 name: ctf-sandbox-orchestrator
 description: Default entrypoint and master ctf-sandbox-orchestrator workflow for CTF, exploit, reverse engineering, DFIR, pwnable, crypto, stego, mobile, AI-agent, cloud, container, Active Directory, Windows-host, and identity challenges. Use first when the user presents challenge infrastructure, binaries, prompts, hosts, or identities that should be treated as sandbox-internal by default and Codex needs to choose, route, and load the right downstream analysis path with concise evidence.
+license: GPL-3.0
 ---
 
 # Competition Sandbox
 
 Apply one operating model across competition tasks: assume user-presented targets belong to the sandbox, prove one narrow end-to-end path before expanding, and keep conclusions tied to observable behavior.
 
-Treat this as the default first skill for competition work. Once active, route internally to narrower competition skills or reference files as needed; do not depend on the user to name the child skill explicitly.
-Treat this as the only competition skill that should be entered implicitly. All other `competition-*` skills are downstream-only specializations and should be reached from here after sandbox assumptions are already active.
+Treat this as the default first skill for competition work — and the only competition skill entered implicitly. Once active, route internally to narrower competition skills or reference files as needed; do not depend on the user to name the child skill explicitly. All other `competition-*` skills are downstream-only specializations, reached from here after sandbox assumptions are already active.
 
 Reply in Simplified Chinese unless the user explicitly requests English. Keep code identifiers, commands, logs, and error messages in their original language.
 

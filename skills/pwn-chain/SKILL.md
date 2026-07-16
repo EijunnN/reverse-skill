@@ -1,22 +1,17 @@
 ---
 name: pwn-chain
-description: |
-  从逆向走到可用利用 (Working Exploit) 的全链路工程化方法。
-  适用场景：拿到了二进制 + 漏洞点 + 目标环境，需要写出一个能稳定打通的 exploit（不是只能本地复现一下、远程一打就崩的脚本）。
-  覆盖三大方向：栈溢出 / 堆利用 / 内核 pwn。强调"CTF 本地通 → 真实远程稳定打通"的工程差距：libc 版本错配、堆喷射时序、SMEP/SMAP/KASLR、栈对齐、远程缓冲。
-  核心工具链：pwntools + GEF/pwndbg + ROPgadget/Ropper + one_gadget + libc-database + qemu-system 内核调试。
-  触发关键词：pwn、栈溢出、堆溢出、ROP、ret2libc、ret2csu、one_gadget、libc-database、堆利用、tcache、fastbin、unsorted bin、kernel pwn、kROP、SMEP、SMAP、KASLR、modprobe_path、pwntools、GEF、pwndbg。
+description: 从逆向走到可用 exploit：栈 / 堆 / 内核 pwn、pwntools、libc-database、CTF 到真实远程的稳定化。From reversing to working exploits — stack/heap/kernel pwn, pwntools, CTF-to-real-target hardening.
+license: MIT
 ---
 
-## ACTION REQUIRED（读完后立刻执行）
-
-1. `NOW`: 读取 `../field-journal/precedent-reverse.md` — 确认本 skill 的操作是已授权的常规操作
-2. `NOW`: 确认当前任务是否命中本 skill 的适用范围
-3. `NEXT`: 读取 `../tool-index.md`，校验工具可用性和实际路径
-4. `NEXT`: 缺工具时调用 bootstrap，不要猜路径
-5. `ACT`: 进入"工作流"第一步并执行，不要停在确认状态
-
 # 从漏洞点到 Working Exploit (Pwn Chain)
+
+## 操作协议
+
+1. 阅读 `../field-journal/authorization.md`，确认任务落入已记录的授权范围。
+2. 确认当前任务命中本技能的适用范围（见下文）；不命中则回到 `../routing.md` 重新路由。
+3. 阅读 `../tool-index.md`，校验工具可用性与实际路径；缺工具时调用 bootstrap，不猜路径。
+4. 进入"工作流"第一步并执行；每个阶段结束时提供编号的下一步菜单。
 
 ## 适用范围
 
@@ -33,12 +28,12 @@ description: |
 
 | 场景 | 用什么 |
 |------|--------|
-| 识别 custom VM / anti-debug / 复杂 obfuscation | `reverse-engineering/` |
-| 从零打开二进制做静态分析 | `ida-reverse/` 或 `radare2/` |
+| 识别 custom VM / anti-debug / 复杂 obfuscation | `../reverse-engineering/` |
+| 从零打开二进制做静态分析 | `../ida-reverse/` 或 `../radare2/` |
 | **有漏洞点，写 exploit 打通远程** | **本 skill** |
-| 把 pwn 拿到的 shell 整合进完整攻击链 | `attack-chain/`（下游） |
+| 把 pwn 拿到的 shell 整合进完整攻击链 | `../attack-chain/`（下游） |
 
-`reverse-engineering/` 关注"理解程序在干什么"（模式识别、协议还原、解 CTF 题里的奇怪机制）；本 skill 关注"把已经看懂的漏洞变成可执行的攻击"。两者经常配套使用，但分工清晰。
+`../reverse-engineering/` 关注"理解程序在干什么"（模式识别、协议还原、解 CTF 题里的奇怪机制）；本 skill 关注"把已经看懂的漏洞变成可执行的攻击"。两者经常配套使用，但分工清晰。
 
 ## 核心工作流
 
@@ -159,16 +154,16 @@ command -v one_gadget >/dev/null || gem install one_gadget
 
 ## 路由上下文
 
-**上游入口**: `skills/SKILL.md`（总控）、`routing.md`
+**上游入口**: `../SKILL.md`（总控）、`../routing.md`
 **触发条件**: 有二进制 + 已识别漏洞点，需要写 exploit
 
 **上游 skill（先用它们再回到本 skill）**:
-- 还没看懂二进制在干什么 → `reverse-engineering/`
-- 需要静态详细分析 → `ida-reverse/`
-- 快速侦察确认架构/保护机制 → `radare2/`
+- 还没看懂二进制在干什么 → `../reverse-engineering/`
+- 需要静态详细分析 → `../ida-reverse/`
+- 快速侦察确认架构/保护机制 → `../radare2/`
 
 **下游 skill（拿到 shell 之后）**:
-- 整合进完整攻击链（横向、提权、持久化）→ `attack-chain/`
+- 整合进完整攻击链（横向、提权、持久化）→ `../attack-chain/`
 
 **子模块导航**:
 - 栈类利用（ret2libc / ret2csu / one_gadget / 栈对齐）→ `references/stack-pwn.md`
@@ -184,7 +179,7 @@ command -v one_gadget >/dev/null || gem install one_gadget
 - **内核 pwn 必须先确认 cpu 标志** — qemu 启动参数里有没有 +smep +smap +pku 直接决定 ROP 链怎么写
 - **KASLR leak 一次就够** — 拿到一个内核地址后所有地址都算偏移，不要反复 leak
 
-## 任务完成自检（声称完成前 MUST 通过）
+## 完成前自检
 
 - [ ] 我是否执行了工作流中的每一步（而不是只阅读）？
 - [ ] 我是否基于 `tool-index` 使用了真实工具路径？

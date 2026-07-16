@@ -1,19 +1,17 @@
-﻿---
+---
 name: docs-generator
-description: |
-  Creates task-oriented technical documentation with progressive disclosure. Use when writing READMEs, API docs, architecture docs, or markdown documentation.
-  Also use this skill at the END of any completed reverse engineering, penetration testing, CTF, or security analysis task to generate a formal report in the user's project directory.
-  Trigger keywords: 写报告, 写文档, 出报告, writeup, 技术文档, report, documentation.
+description: 任务完成后生成正式技术文档：逆向报告、渗透报告、CTF writeup、签名逆向报告。Generate formal security deliverables — RE reports, pentest reports, CTF writeups.
+license: MIT
 ---
 
 # Technical Documentation
 
-## ACTION REQUIRED（读完后立刻执行）
+## 操作协议
 
-1. `NOW`：确认当前任务是否命中本 skill 的适用范围
-2. `NOW`：读取 `../tool-index.md`，校验工具可用性和实际路径
-3. `NEXT`：缺工具时调用 bootstrap，不要猜路径
-4. `ACT`：进入"工作流"第一步并执行，不要停在确认状态
+1. 阅读 `../field-journal/authorization.md`，确认任务落入已记录的授权范围。
+2. 确认当前任务命中本技能的适用范围（见下文）；不命中则回到 `../routing.md` 重新路由。
+3. 阅读 `../tool-index.md`，校验工具可用性与实际路径；缺工具时调用 bootstrap，不猜路径。
+4. 进入"工作流"第一步并执行；每个阶段结束时提供编号的下一步菜单。
 
 For writing style, tone, and voice guidance, use `Skill(ce:writer)` with **The Engineer** persona.
 
@@ -56,7 +54,7 @@ For writing style, tone, and voice guidance, use `Skill(ce:writer)` with **The E
 
 ### 图表集成
 
-生成报告时，应在适当位置调用 `diagram-generator` skill 生成可视化图表：
+生成报告时，应在适当位置调用 `../diagram-generator` skill 生成可视化图表：
 
 | 报告类型 | 建议图表 | 图表类型 |
 |---------|---------|---------|
@@ -133,14 +131,13 @@ For README, API endpoint, and file organization templates, see [references/templ
 - `Skill(ce:writer)` - Writing style, tone, and voice (load The Engineer persona)
 - `Skill(ce:visualizing-with-mermaid)` - Architecture and flow diagrams
 
-
 ---
 
 ## 按需自举（On-Demand Bootstrap）
 
 本 skill 不依赖外部工具，纯文本生成。无需 bootstrap。
 
-如果需要渲染图表嵌入报告，会调用 `diagram-generator/` skill。
+如果需要渲染图表嵌入报告，会调用 `../diagram-generator/` skill。
 
 ---
 
@@ -152,18 +149,17 @@ For README, API endpoint, and file organization templates, see [references/templ
 - 手动：用户说"写报告"、"出文档"、"writeup"
 
 **同级关联模块**:
-- `apk-reverse/` — APK 逆向完成后生成逆向报告
-- `ida-reverse/` — 二进制分析完成后生成逆向报告
-- `radare2/` — CLI 分析完成后生成逆向报告
-- `js-reverse/` — JS 签名逆向完成后生成签名报告
-- `reverse-engineering/` — 通用逆向完成后生成逆向报告
-- `field-journal/` — 报告内容同时作为进化日志的数据来源
+- `../apk-reverse/` — APK 逆向完成后生成逆向报告
+- `../ida-reverse/` — 二进制分析完成后生成逆向报告
+- `../radare2/` — CLI 分析完成后生成逆向报告
+- `../js-reverse/` — JS 签名逆向完成后生成签名报告
+- `../reverse-engineering/` — 通用逆向完成后生成逆向报告
+- `../field-journal/` — 报告内容同时作为进化日志的数据来源
 
 **安全报告模板**: `references/security-report-templates.md`
 **通用文档模板**: `references/templates.md`
 
-
-## 任务完成自检（声称完成前 MUST 通过）
+## 完成前自检
 
 - [ ] 我是否执行了工作流中的每一步（而不是只阅读）？
 - [ ] 我是否基于 `tool-index` 使用了真实工具路径？

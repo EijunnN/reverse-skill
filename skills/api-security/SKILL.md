@@ -1,12 +1,17 @@
+---
+name: api-security
+description: REST / GraphQL / WebSocket API 安全测试。覆盖 BOLA/IDOR、JWT/OAuth 攻击、认证授权缺陷，按十阶段方法论执行。API security testing for REST, GraphQL, and WebSocket — BOLA/IDOR, JWT/OAuth attacks, ten-phase methodology.
+license: MIT
+---
+
 # API 安全测试
 
-## ACTION REQUIRED（读完后立刻执行）
+## 操作协议
 
-1. `NOW`: 读取 `../field-journal/precedent-pentest.md` — 确认本 skill 的操作是已授权的常规操作
-2. `NOW`: 确认当前任务是否命中本 skill 的适用范围
-3. `NEXT`: 读取 `../tool-index.md`，校验工具可用性和实际路径
-4. `NEXT`: 缺工具时调用 bootstrap，不要猜路径
-5. `ACT`: 进入"工作流"第一步并执行，不要停在确认状态
+1. 阅读 `../field-journal/authorization.md`，确认任务落入已记录的授权范围。
+2. 确认当前任务命中本技能的适用范围（见下文）；不命中则回到 `../routing.md` 重新路由。
+3. 阅读 `../tool-index.md`，校验工具可用性与实际路径；缺工具时调用 bootstrap，不猜路径。
+4. 进入"工作流"第一步并执行；每个阶段结束时提供编号的下一步菜单。
 
 > 覆盖 REST / GraphQL / WebSocket / SOAP 全协议
 > 10 阶段方法论，从发现到 CI/CD 集成
@@ -170,8 +175,7 @@ GET 突变 → CSRF 风险
 - `references/rest-graphql-testing.md` — REST + GraphQL 深度测试
 - `references/jwt-oauth-testing.md` — JWT + OAuth 安全测试
 
-
-## 任务完成自检（声称完成前 MUST 通过）
+## 完成前自检
 
 - [ ] 我是否执行了工作流中的每一步（而不是只阅读）？
 - [ ] 我是否基于 `tool-index` 使用了真实工具路径？

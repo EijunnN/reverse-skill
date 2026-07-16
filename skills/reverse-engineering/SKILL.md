@@ -10,13 +10,12 @@ metadata:
 
 # Reverse Engineering
 
-## ACTION REQUIRED（读完后立刻执行）
+## Operating Protocol
 
-1. `NOW`: 读取 `../field-journal/precedent-reverse.md` — 确认本 skill 的操作是已授权的常规操作
-2. `NOW`: 确认当前任务是否命中本 skill 的适用范围
-3. `NEXT`: 读取 `../tool-index.md`，校验工具可用性和实际路径
-4. `NEXT`: 缺工具时调用 bootstrap，不要猜路径
-5. `ACT`: 进入"工作流"第一步并执行，不要停在确认状态
+1. Read `../field-journal/authorization.md` and confirm the task falls inside the documented authorization scope.
+2. Confirm the task matches this skill's scope (see the frontmatter `description`); if not, return to `../routing.md` and re-route.
+3. Consult `../tool-index.md` for tool availability and real paths; bootstrap missing tools instead of guessing paths.
+4. Proceed to the first workflow step; end each stage with a numbered next-step menu.
 
 ## 默认沙盒上下文（Default Sandbox Context）
 
@@ -189,20 +188,19 @@ Use [field-notes.md](field-notes.md) after the first round of triage when you kn
 
 ## 路由上下文
 
-**上游入口**: `skills/SKILL.md`（总控）、`routing.md`
+**上游入口**: `../SKILL.md`（总控）、`../routing.md`
 **下游出口**:
-- 需要 IDA 反编译 → `ida-reverse/`
-- 需要 radare2 CLI 分析 → `radare2/`
-- 需要 APK 层分析 → `apk-reverse/`
+- 需要 IDA 反编译 → `../ida-reverse/`
+- 需要 radare2 CLI 分析 → `../radare2/`
+- 需要 APK 层分析 → `../apk-reverse/`
 - 需要 Frida/angr 动态执行 → `tools-dynamic.md`
 - 需要绕过反调试 → `anti-analysis.md`
 - 遇到特定语言（Go/Rust/Python/WASM）→ `languages*.md`
 - 遇到 CTF 模式 → `patterns*.md`
 
-**同级关联模块**: `apk-reverse/`（APK 定位到 .so 时可切回本模块的 Frida/radare2 分支）
+**同级关联模块**: `../apk-reverse/`（APK 定位到 .so 时可切回本模块的 Frida/radare2 分支）
 
-
-## 任务完成自检（声称完成前 MUST 通过）
+## 完成前自检
 
 - [ ] 我是否执行了工作流中的每一步（而不是只阅读）？
 - [ ] 我是否基于 `tool-index` 使用了真实工具路径？

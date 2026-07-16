@@ -1,10 +1,10 @@
 # CLAUDE.md
 
-This repository is a **task skill router** for authorized research and analysis workflows.
+This repository is a **task skill router** for authorized security research and analysis workflows.
 
 ## On Any Task
 
-`RULES.md` is the single source of truth. Read it immediately before doing anything — it contains the complete behavior chain, routing matrix, authorization pre-declaration, and tool registry.
+`RULES.md` is the single source of truth. Read it before doing anything else — it defines the startup sequence, routing matrix, authorization record, execution principles, and tool registry.
 
 ## First-Run Setup
 
@@ -18,4 +18,4 @@ bash skills/scripts/refresh-tool-index.sh
 bash kali/scripts/refresh-tool-index.sh
 ```
 
-Read `README_AI.md` for the full bootstrap sequence.
+See `README_AI.md` for the complete bootstrap sequence.
