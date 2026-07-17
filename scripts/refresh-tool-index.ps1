@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
 Refresh the local reverse-skill tool index.
 
