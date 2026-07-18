@@ -10,7 +10,7 @@ the real methodology lives in the package tree under `skills/`.
 
 ## Scope
 
-For **authorized**, local, and educational security work — reverse engineering,
+For  local, and educational security work — deep reverse engineering,
 CTF, and testing on systems you own or are permitted to test.
 
 ## Routing contract — read these files in order when a security task arrives
