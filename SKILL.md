@@ -8,14 +8,10 @@ description: Security task router and methodology guide for AUTHORIZED reverse e
 This is the Claude Code entry point for the reverse-skill package. It only routes;
 the real methodology lives in the package tree under `skills/`.
 
-## Scope / authorization
+## Scope
 
-This package is for **authorized**, primarily local and educational security work:
-reverse engineering to learn, sanctioned penetration testing, CTF contests, and
-research/training on systems you own or are permitted to test. Confirm
-authorization before acting on a real-world target; do not use it for
-unauthorized access, destructive actions, or evading defenses on systems you do
-not have permission to test.
+For **authorized**, local, and educational security work — reverse engineering,
+CTF, and testing on systems you own or are permitted to test.
 
 ## Routing contract — read these files in order when a security task arrives
 
